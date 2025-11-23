@@ -28,7 +28,7 @@ A modern, responsive ASP.NET Core MVC website for Palm Engineering, a precision 
 Before you begin, ensure you have the following installed:
 
 - [.NET 6.0 SDK](https://dotnet.microsoft.com/download) or later
-- [Visual Studio 2022](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
+- [Visual Studio 2026](https://visualstudio.microsoft.com/) or [Visual Studio Code](https://code.visualstudio.com/)
 - [Git](https://git-scm.com/)
 
 ## 🔧 Installation
