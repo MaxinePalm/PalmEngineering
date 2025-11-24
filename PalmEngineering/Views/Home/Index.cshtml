@@ -1,0 +1,80 @@
+﻿@model List<PalmEngineering.Models.Service>
+@{
+    ViewData["Title"] = "Home";
+    Layout = "_Layout";
+}
+
+<div class="hero">
+    <div class="hero-content">
+        <h1>Palm Engineering</h1>
+        <p class="subtitle">Precision CNC Machining & Manufacturing Solutions</p>
+        <p class="tagline">Delivering exceptional quality components for demanding industries across South Africa</p>
+        <div>
+            <a href="/Home/Contact" class="btn">Request a Quote</a>
+            <a href="/Home/Services" class="btn btn-secondary">Our Services</a>
+        </div>
+    </div>
+</div>
+
+<section style="padding-top: 1rem;">
+    <h2 class="section-title">Our Services</h2>
+    <p class="section-subtitle">Expert precision engineering with state-of-the-art CNC equipment</p>
+
+    <div class="services-grid">
+        @foreach (var service in Model)
+        {
+            <div class="service-card">
+                <span class="service-icon">@service.IconClass</span>
+                <h3>@service.Name</h3>
+                <p>@service.Description</p>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <span class="stat-number">25+</span>
+            <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">±0.01mm</span>
+            <span class="stat-label">Precision Tolerance</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Projects Completed</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">ISO</span>
+            <span class="stat-label">Certified Quality</span>
+        </div>
+    </div>
+</section>
+
+<section style="margin-top: 4rem;">
+    <h2 class="section-title">Why Choose Palm Engineering?</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+        <div class="service-card">
+            <span class="service-icon">🎯</span>
+            <h3>Precision Excellence</h3>
+            <p>Achieving tight tolerances with advanced CNC equipment and expert craftsmanship</p>
+        </div>
+        <div class="service-card">
+            <span class="service-icon">⚡</span>
+            <h3>Fast Turnaround</h3>
+            <p>Quick prototyping and efficient production runs to meet your deadlines</p>
+        </div>
+        <div class="service-card">
+            <span class="service-icon">✅</span>
+            <h3>Quality Assured</h3>
+            <p>Comprehensive quality control and inspection throughout the manufacturing process</p>
+        </div>
+        <div class="service-card">
+            <span class="service-icon">🤝</span>
+            <h3>Customer Focused</h3>
+            <p>Dedicated support from initial consultation through to final delivery</p>
+        </div>
+    </div>
+</section>

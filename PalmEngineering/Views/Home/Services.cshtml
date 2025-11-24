@@ -1,0 +1,44 @@
+﻿@model List<PalmEngineering.Models.Service>
+@{
+    ViewData["Title"] = "Our Services";
+}
+
+<h1 style="color: #1e3c72; margin-bottom: 1rem;">Our Services</h1>
+<p style="color: #666; margin-bottom: 3rem; font-size: 1.1rem;">Comprehensive precision machining solutions for your most demanding projects</p>
+
+<div class="services-grid">
+    @foreach (var service in Model)
+    {
+        <div class="service-card">
+            <div class="service-icon">@service.IconClass</div>
+            <h3>@service.Name</h3>
+            <p>@service.Description</p>
+        </div>
+    }
+</div>
+
+<section style="margin-top: 4rem; background: #f8f9fa; padding: 2rem; border-radius: 10px;">
+    <h2 style="color: #1e3c72; margin-bottom: 1rem;">Materials We Work With</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+        <div>
+            <h4>Metals</h4>
+            <ul class="capabilities">
+                <li>Aluminum (6061, 7075, MIC-6)</li>
+                <li>Steel (4140, 4340, A36)</li>
+                <li>Stainless Steel (304, 316, 17-4 PH)</li>
+                <li>Titanium (Grade 5, Grade 2)</li>
+                <li>Brass & Copper</li>
+            </ul>
+        </div>
+        <div>
+            <h4>Plastics</h4>
+            <ul class="capabilities">
+                <li>Delrin (Acetal)</li>
+                <li>PEEK</li>
+                <li>Nylon</li>
+                <li>UHMW</li>
+                <li>Acrylic</li>
+            </ul>
+        </div>
+    </div>
+</section>

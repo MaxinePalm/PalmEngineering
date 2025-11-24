@@ -1,0 +1,59 @@
+﻿@model PalmEngineering.Models.QuoteRequest
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<h1 style="color: #1e3c72; margin-bottom: 1rem;">Request a Quote</h1>
+<p style="color: #666; margin-bottom: 2rem;">Fill out the form below and we'll get back to you within 24 hours with a detailed quote.</p>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert-error">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+<!-- Also wrap the entire form in the form-container div -->
+<div class="form-container">
+    <form method="post" asp-controller="Home" asp-action="Contact">
+        <!-- All your existing form content stays the same -->
+    </form>
+</div>
+
+<!-- Update contact information section at bottom -->
+<section class="info-card" style="margin-top: 4rem;">
+    <h2 style="text-align: center; margin-bottom: 2rem;">Contact Information</h2>
+    <div class="contact-grid">
+        <div class="contact-item">
+            <h4>📍 Location</h4>
+            <p>242 Commercial Rd<br />Sidwell, Gqeberha<br />Eastern Cape, 6070</p>
+        </div>
+        <div class="contact-item">
+            <h4>📞 Phone</h4>
+            <p>
+                <strong>Preferred: <a href="tel:0829217644">082 921 7644</a></strong><br />
+                Alternative: <a href="tel:0836566604">083 656 6604</a><br />
+                Work: <a href="tel:0414539681">041 453 9681</a>
+            </p>
+        </div>
+        <div class="contact-item">
+            <h4>📧 Email</h4>
+            <p><a href="mailto:palmeng@netsurfers.co.za">palmeng@netsurfers.co.za</a></p>
+        </div>
+        <div class="contact-item">
+            <h4>🕒 Hours</h4>
+            <p>
+                <strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br />
+                <strong>Saturday:</strong> Closed<br />
+                <strong>Sunday:</strong> Closed
+            </p>
+        </div>
+    </div>
+</section>
