@@ -37,20 +37,31 @@ PalmEngineering/
         └── Error.cshtml            # Error page
 ```
 
-## Setup & Run
+## 🔧 Installation
+
+1. **Clone the repository**
 ```bash
-# Restore dependencies
-dotnet restore
-
-# Build
-dotnet build
-
-# Run
-dotnet run
-
-# Navigate to
-https://localhost:5001
+   git clone https://github.com/yourusername/palm-engineering.git
+   cd palm-engineering
 ```
+
+2. **Restore dependencies**
+```bash
+   dotnet restore
+```
+
+3. **Build the project**
+```bash
+   dotnet build
+```
+
+4. **Run the application**
+```bash
+   dotnet run
+```
+
+5. **Open in browser**
+   Navigate to `https://localhost:5001` or `http://localhost:5000`
 
 ## Key Features
 
