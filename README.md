@@ -4,6 +4,9 @@
 
 ASP.NET Core MVC web application for Palm Engineering, a precision CNC machining company.
 
+![Palm Engineering](https://img.shields.io/badge/ASP.NET%20Core-MVC-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+
 ## Tech Stack
 
 - ASP.NET Core 6.0+
