@@ -1,0 +1,107 @@
+# Palm Engineering - ASP.NET Core MVC Website
+
+## Project Overview
+
+ASP.NET Core MVC web application for Palm Engineering, a precision CNC machining company.
+
+## Tech Stack
+
+- ASP.NET Core 6.0+
+- C# MVC Pattern
+- Razor Views
+- CSS3 with CSS Variables
+
+## Project Structure
+```
+PalmEngineering/
+├── Program.cs                      # Application entry point
+├── Controllers/
+│   └── HomeController.cs           # Handles all page routing and form submission
+├── Models/
+│   ├── Service.cs                  # Service entity
+│   ├── QuoteRequest.cs             # Quote form model with validation
+│   └── ErrorViewModel.cs           # Error handling
+└── Views/
+    ├── _ViewImports.cshtml         # Global imports
+    ├── _ViewStart.cshtml           # Default layout config
+    ├── Home/
+    │   ├── Index.cshtml            # Homepage
+    │   ├── About.cshtml            # About page
+    │   ├── Services.cshtml         # Services listing
+    │   └── Contact.cshtml          # Contact form
+    └── Shared/
+        ├── _Layout.cshtml          # Master layout with all CSS
+        └── Error.cshtml            # Error page
+```
+
+## Setup & Run
+```bash
+# Restore dependencies
+dotnet restore
+
+# Build
+dotnet build
+
+# Run
+dotnet run
+
+# Navigate to
+https://localhost:5001
+```
+
+## Key Features
+
+### Controllers
+- `HomeController.cs` - Main controller with Index, About, Services, Contact actions
+- `SendQuoteEmail()` - Saves quote requests to `quote_requests.txt`
+
+### Models
+- `Service` - Properties: Id, Name, Description, IconClass
+- `QuoteRequest` - Form model with DataAnnotations validation
+- `ErrorViewModel` - Standard error handling
+
+### Views
+- `_Layout.cshtml` - Contains all CSS (full-width responsive design)
+- Form validation using ASP.NET Core tag helpers
+- Success/error messages via TempData
+
+## CSS Architecture
+
+All styles in `_Layout.cshtml` using CSS custom properties:
+```css
+:root {
+    --primary: #0f2557;
+    --secondary: #2563eb;
+    --accent: #3b82f6;
+}
+```
+
+- Responsive grid layouts
+- Full-width design (100% viewport)
+- Sticky header navigation
+- Hover effects and transitions
+
+## Form Handling
+
+Quote requests flow:
+1. User submits form → `[HttpPost] Contact(QuoteRequest request)`
+2. Model validation via DataAnnotations
+3. Save to `quote_requests.txt` via `SendQuoteEmail()`
+4. Success message via `TempData`
+5. Redirect to prevent resubmission
+
+## Namespaces
+
+All files use `PalmEngineering` namespace:
+- `PalmEngineering.Controllers`
+- `PalmEngineering.Models`
+
+## Configuration
+
+No external configuration required. Quote requests saved to local text file.
+
+Optional: Add SMTP settings to `appsettings.json` for email functionality.
+
+## Dependencies
+
+No additional NuGet packages required beyond default ASP.NET Core MVC template.
