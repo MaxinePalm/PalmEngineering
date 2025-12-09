@@ -29,79 +29,102 @@ namespace PrecisionEngineering.Controllers
             return View();
         }
 
-        [HttpPost]
-        public IActionResult Contact(QuoteRequest request)
+        public IActionResult Gallery()
         {
-            if (ModelState.IsValid)
+            // Sample data - replace with database or actual image paths
+            var galleryItems = new List<GalleryItem>
             {
-                try
-                {
-                    // Send email notification
-                    SendQuoteEmail(request);
-
-                    TempData["SuccessMessage"] = "Thank you! We've received your quote request and will contact you within 24 hours.";
-                    return RedirectToAction("Contact");
-                }
-                catch (Exception ex)
-                {
-                    TempData["ErrorMessage"] = "There was an error submitting your request. Please call us at 082 921 7644 or email palmeng@netsurfers.co.za";
-                    return View(request);
-                }
-            }
-            return View(request);
+            new GalleryItem
+        {
+            Id = 1,
+            Title = "Assembly Fixtures",
+            Description = "Custom-designed assembly fixtures for manufacturing processes",
+            ImageUrl = "/images/gallery/assembly-fixtures.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 2,
+            Title = "Wheel Spacers",
+            Description = "Precision-machined wheel spacers for automotive applications",
+            ImageUrl = "/images/gallery/wheel-spacers.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 3,
+            Title = "Custom Conveyor Rollers",
+            Description = "Engineered conveyor rollers for industrial material handling systems",
+            ImageUrl = "/images/gallery/conveyor-rollers.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 4,
+            Title = "Stainless Steel Fabrications",
+            Description = "High-quality stainless steel fabrication work for various industries",
+            ImageUrl = "/images/gallery/stainless-fabrications.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 5,
+            Title = "Special Purpose Manifolds",
+            Description = "Custom-designed manifolds for specialized applications",
+            ImageUrl = "/images/gallery/manifolds.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 6,
+            Title = "Educational Projects",
+            Description = "Precision components manufactured for educational institutions",
+            ImageUrl = "/images/gallery/educational-projects.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 7,
+            Title = "Lathe Work",
+            Description = "Expert precision turning and lathe machining services",
+            ImageUrl = "/images/gallery/lathe-work.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 8,
+            Title = "Stainless Steel Fittings",
+            Description = "Precision-machined stainless steel fittings and connections",
+            ImageUrl = "/images/gallery/stainless-fittings.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 9,
+            Title = "Woodwork Limit Clamps",
+            Description = "Specialized limit clamps for woodworking applications",
+            ImageUrl = "/images/gallery/woodwork-clamps.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 10,
+            Title = "Precision Turning",
+            Description = "High-precision CNC turning for demanding specifications",
+            ImageUrl = "/images/gallery/precision-turning.jpg",
+            DateAdded = DateTime.Now
+        },
+        new GalleryItem
+        {
+            Id = 11,
+            Title = "Malt Cracking Mills",
+            Description = "Custom-engineered malt cracking mills for brewing applications",
+            ImageUrl = "/images/gallery/malt-mills.jpg",
+            DateAdded = DateTime.Now
         }
+    };
 
-        private void SendQuoteEmail(QuoteRequest request)
-        {
-            // Email configuration
-            string toEmail = "palmeng@netsurfers.co.za";
-            string subject = $"New Quote Request from {request.Company}";
-
-            string body = $@"
-                <html>
-                <body style='font-family: Arial, sans-serif;'>
-                    <h2>New Quote Request</h2>
-                    <table style='border-collapse: collapse; width: 100%;'>
-                        <tr><td style='padding: 8px; border: 1px solid #ddd;'><strong>Name:</strong></td><td style='padding: 8px; border: 1px solid #ddd;'>{request.Name}</td></tr>
-                        <tr><td style='padding: 8px; border: 1px solid #ddd;'><strong>Company:</strong></td><td style='padding: 8px; border: 1px solid #ddd;'>{request.Company}</td></tr>
-                        <tr><td style='padding: 8px; border: 1px solid #ddd;'><strong>Email:</strong></td><td style='padding: 8px; border: 1px solid #ddd;'>{request.Email}</td></tr>
-                        <tr><td style='padding: 8px; border: 1px solid #ddd;'><strong>Phone:</strong></td><td style='padding: 8px; border: 1px solid #ddd;'>{request.Phone}</td></tr>
-                        <tr><td style='padding: 8px; border: 1px solid #ddd;'><strong>Service Type:</strong></td><td style='padding: 8px; border: 1px solid #ddd;'>{request.ServiceType}</td></tr>
-                        <tr><td style='padding: 8px; border: 1px solid #ddd;'><strong>Material:</strong></td><td style='padding: 8px; border: 1px solid #ddd;'>{request.Material}</td></tr>
-                        <tr><td style='padding: 8px; border: 1px solid #ddd;'><strong>Quantity:</strong></td><td style='padding: 8px; border: 1px solid #ddd;'>{request.Quantity}</td></tr>
-                        <tr><td style='padding: 8px; border: 1px solid #ddd;'><strong>Required Date:</strong></td><td style='padding: 8px; border: 1px solid #ddd;'>{request.RequiredDate?.ToString("dd/MM/yyyy") ?? "Not specified"}</td></tr>
-                    </table>
-                    <h3>Project Description:</h3>
-                    <p style='border: 1px solid #ddd; padding: 10px; background: #f9f9f9;'>{request.ProjectDescription}</p>
-                    <p style='color: #666; margin-top: 20px;'>Submitted on: {DateTime.Now:dd/MM/yyyy HH:mm}</p>
-                </body>
-                </html>
-            ";
-
-            using (MailMessage mail = new MailMessage())
-            {
-                mail.From = new MailAddress("noreply@palmengineering.co.za");
-                mail.To.Add(toEmail);
-                mail.Subject = subject;
-                mail.Body = body;
-                mail.IsBodyHtml = true;
-                mail.ReplyToList.Add(new MailAddress(request.Email, request.Name));
-
-                // NOTE: Configure your SMTP settings in appsettings.json
-                // For now, this will log the quote request
-                System.IO.File.AppendAllText("quote_requests.txt",
-                    $"\n\n=== Quote Request {DateTime.Now} ===\n" +
-                    $"Name: {request.Name}\n" +
-                    $"Company: {request.Company}\n" +
-                    $"Email: {request.Email}\n" +
-                    $"Phone: {request.Phone}\n" +
-                    $"Service: {request.ServiceType}\n" +
-                    $"Material: {request.Material}\n" +
-                    $"Quantity: {request.Quantity}\n" +
-                    $"Required Date: {request.RequiredDate}\n" +
-                    $"Description: {request.ProjectDescription}\n"
-                );
-            }
+            return View(galleryItems);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

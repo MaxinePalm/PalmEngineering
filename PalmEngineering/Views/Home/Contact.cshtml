@@ -3,23 +3,6 @@
     ViewData["Title"] = "Contact Us";
 }
 
-<h1 style="color: #1e3c72; margin-bottom: 1rem;">Request a Quote</h1>
-<p style="color: #666; margin-bottom: 2rem;">Fill out the form below and we'll get back to you within 24 hours with a detailed quote.</p>
-
-@if (TempData["SuccessMessage"] != null)
-{
-    <div class="alert-success">
-        @TempData["SuccessMessage"]
-    </div>
-}
-
-@if (TempData["ErrorMessage"] != null)
-{
-    <div class="alert-error">
-        @TempData["ErrorMessage"]
-    </div>
-}
-
 <!-- Also wrap the entire form in the form-container div -->
 <div class="form-container">
     <form method="post" asp-controller="Home" asp-action="Contact">
