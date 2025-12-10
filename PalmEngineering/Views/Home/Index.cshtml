@@ -1,9 +1,11 @@
 ﻿@model List<PalmEngineering.Models.Service>
+
 @{
     ViewData["Title"] = "Home";
     Layout = "_Layout";
 }
 
+<!-- Hero Section -->
 <div class="hero">
     <div class="hero-content">
         <h1>Palm Engineering</h1>
@@ -15,26 +17,92 @@
     </div>
 </div>
 
-<section style="padding-top: 1rem;">
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-subtitle">Expert precision engineering with state-of-the-art CNC equipment</p>
+<!-- Mission Statement -->
+<section style="background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); padding: 3rem 2rem;">
+    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
+        <h2 style="color: var(--primary); font-size: 1.8rem; font-weight: 700; margin-bottom: 1.5rem;">Our Mission</h2>
+        <p style="color: var(--text-dark); font-size: 1.3rem; font-weight: 500; line-height: 1.8; max-width: 900px; margin: 0 auto; font-style: italic;">
+            "Quality Products supplied on time at the right price to satisfied customers who keep coming back"
+        </p>
+    </div>
+    <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 2rem auto 0; border-radius: 2px;"></div>
+</section>
 
-    <div class="services-grid">
-        @foreach (var service in Model)
-        {
-            <div class="service-card">
-                <span class="service-icon">@service.IconClass</span>
-                <h3>@service.Name</h3>
-                <p>@service.Description</p>
+<!-- Company Information -->
+<section style="background: white; padding: 2.5rem 2rem;">
+    <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
+        <h3 style="color: var(--primary); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">
+            MICROMATICA 908 (PTY) LTD t/a PALM ENGINEERING
+        </h3>
+        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem;">Reg. No 2003/011854/07</p>
+        <p style="color: var(--text-dark); font-size: 1.15rem; font-weight: 500; margin-bottom: 1.5rem;">
+            Specialising in General/Precision Engineering Tooling & Innovative Design for 30 years
+        </p>
+        <div style="display: inline-block; background: linear-gradient(135deg, var(--secondary), var(--accent)); color: white; padding: 0.6rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem;">
+            B-BBEE Rating Level 4
+        </div>
+    </div>
+    <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 2rem auto 0; border-radius: 2px;"></div>
+</section>
+
+<!-- Core Values -->
+<section style="background: var(--bg-light); padding: 3rem 2rem;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+        <h2 class="section-title">Our Core Values</h2>
+        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem auto 2rem; border-radius: 2px;"></div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+            <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid var(--border);">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
+                <h4 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Service</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem;">In pursuit of mutual value</p>
             </div>
-        }
+            <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid var(--border);">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💡</div>
+                <h4 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Innovation</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem;">In pursuit of mutual value</p>
+            </div>
+            <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid var(--border);">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚙️</div>
+                <h4 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Precision</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem;">In pursuit of mutual value</p>
+            </div>
+            <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid var(--border);">
+                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🤝</div>
+                <h4 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Integrity</h4>
+                <p style="color: var(--text-light); font-size: 0.9rem;">In pursuit of mutual value</p>
+            </div>
+        </div>
     </div>
 </section>
 
+<!-- Services Section -->
+<section style="padding: 3rem 2rem; background: white;">
+    <div style="max-width: 1280px; margin: 0 auto;">
+        <h2 class="section-title">Our Services</h2>
+        <p class="section-subtitle">Expert precision engineering with state-of-the-art CNC equipment</p>
+        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1.5rem auto 2rem; border-radius: 2px;"></div>
+
+        <div class="services-grid">
+            @if (Model != null && Model.Any())
+            {
+                foreach (var service in Model)
+                {
+                    <div class="service-card">
+                        <span class="service-icon">@service.IconClass</span>
+                        <h3>@service.Name</h3>
+                        <p>@service.Description</p>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
 <section class="stats-section">
     <div class="stats-grid">
         <div class="stat-item">
-            <span class="stat-number">25+</span>
+            <span class="stat-number">30+</span>
             <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-item">
@@ -52,28 +120,27 @@
     </div>
 </section>
 
-<section style="margin-top: 4rem;">
-    <h2 class="section-title">Why Choose Palm Engineering?</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
-        <div class="service-card">
-            <span class="service-icon">🎯</span>
-            <h3>Precision Excellence</h3>
-            <p>Achieving tight tolerances with advanced CNC equipment and expert craftsmanship</p>
-        </div>
-        <div class="service-card">
-            <span class="service-icon">⚡</span>
-            <h3>Fast Turnaround</h3>
-            <p>Quick prototyping and efficient production runs to meet your deadlines</p>
-        </div>
-        <div class="service-card">
-            <span class="service-icon">✅</span>
-            <h3>Quality Assured</h3>
-            <p>Comprehensive quality control and inspection throughout the manufacturing process</p>
-        </div>
-        <div class="service-card">
-            <span class="service-icon">🤝</span>
-            <h3>Customer Focused</h3>
-            <p>Dedicated support from initial consultation through to final delivery</p>
+<!-- Why Choose Us -->
+<section style="padding: 3rem 2rem; background: var(--bg-light);">
+    <div style="max-width: 1280px; margin: 0 auto;">
+        <h2 class="section-title">Why Choose Palm Engineering?</h2>
+        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem auto 2rem; border-radius: 2px;"></div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
+            <div class="service-card">
+                <span class="service-icon">⚡</span>
+                <h3>Fast Turnaround</h3>
+                <p>Quick prototyping and efficient production runs to meet your deadlines</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">✅</span>
+                <h3>Quality Assured</h3>
+                <p>Comprehensive quality control and inspection throughout the manufacturing process</p>
+            </div>
+            <div class="service-card">
+                <span class="service-icon">🤝</span>
+                <h3>Customer Focused</h3>
+                <p>Dedicated support from initial consultation through to final delivery</p>
+            </div>
         </div>
     </div>
 </section>
