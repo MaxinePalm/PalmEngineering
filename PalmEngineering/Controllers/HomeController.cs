@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PalmEngineering.Models;
 using System.Diagnostics;
-using System.Net.Mail;
 
 namespace PrecisionEngineering.Controllers
 {

@@ -1,11 +1,20 @@
 ﻿@model List<PalmEngineering.Models.GalleryItem>
 @{
     ViewData["Title"] = "Gallery";
+    Layout = "_Layout";
 }
 
-<h1 style="color: #1e3c72; margin-bottom: 1rem;">Project Gallery</h1>
-<p style="color: #666; margin-bottom: 3rem; font-size: 1.1rem;">Showcasing our precision engineering work and capabilities</p>
+<h1 style="color: var(--primary); margin-bottom: 1rem;">
+    Project Gallery
+</h1>
 
+<p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
+    Showcasing our precision engineering work and capabilities
+</p>
+
+<div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1.5rem 0 3rem; border-radius: 2px;"></div>
+
+<!-- GALLERY GRID -->
 <div class="gallery-grid">
     @foreach (var item in Model)
     {
@@ -79,10 +88,7 @@
 
     .gallery-overlay {
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+        inset: 0;
         background: rgba(15, 37, 87, 0.8);
         display: flex;
         align-items: center;
@@ -121,10 +127,7 @@
     .lightbox {
         display: none;
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        inset: 0;
         background: rgba(0, 0, 0, 0.95);
         z-index: 9999;
         align-items: center;
@@ -212,25 +215,20 @@
 <script>
     function openLightbox(imageUrl, title, description) {
         const lightbox = document.getElementById('lightbox');
-        const img = document.getElementById('lightbox-img');
-        const titleEl = document.getElementById('lightbox-title');
-        const descEl = document.getElementById('lightbox-description');
+        document.getElementById('lightbox-img').src = imageUrl;
+        document.getElementById('lightbox-title').textContent = title;
+        document.getElementById('lightbox-description').textContent = description;
 
-        img.src = imageUrl;
-        titleEl.textContent = title;
-        descEl.textContent = description;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.classList.remove('active');
+        document.getElementById('lightbox').classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Close on Escape key
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
             closeLightbox();
         }

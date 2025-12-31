@@ -1,39 +1,58 @@
-﻿@model PalmEngineering.Models.QuoteRequest
+﻿@model PalmEngineering.Models.Service
 @{
     ViewData["Title"] = "Contact Us";
+    Layout = "_Layout";
 }
 
-<!-- Also wrap the entire form in the form-container div -->
-<div class="form-container">
-    <form method="post" asp-controller="Home" asp-action="Contact">
-        <!-- All your existing form content stays the same -->
-    </form>
-</div>
+<section class="info-card">
 
-<!-- Update contact information section at bottom -->
-<section class="info-card" style="margin-top: 4rem;">
-    <h2 style="text-align: center; margin-bottom: 2rem;">Contact Information</h2>
+    <h2 style="text-align: center; margin-bottom: 1rem;">
+        Contact Information
+    </h2>
+
+    <div style="
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--secondary), var(--accent));
+        margin: 0 auto 2.5rem;
+        border-radius: 2px;">
+    </div>
+
     <div class="contact-grid">
         <div class="contact-item">
             <h4>📍 Location</h4>
-            <p>242 Commercial Rd<br />Sidwell, Gqeberha<br />Eastern Cape, 6070</p>
+            <p>
+                242 Commercial Rd<br />
+                Sidwell, Gqeberha<br />
+                Eastern Cape, 6070
+            </p>
         </div>
+
         <div class="contact-item">
             <h4>📞 Phone</h4>
             <p>
-                <strong>Preferred: <a href="tel:0829217644">082 921 7644</a></strong><br />
-                Alternative: <a href="tel:0836566604">083 656 6604</a><br />
-                Work: <a href="tel:0414539681">041 453 9681</a>
+                <strong>Preferred:</strong>
+                <a href="tel:0829217644">082 921 7644</a><br />
+                Alternative:
+                <a href="tel:0836566604">083 656 6604</a><br />
+                Work:
+                <a href="tel:0414539681">041 453 9681</a>
             </p>
         </div>
+
         <div class="contact-item">
             <h4>📧 Email</h4>
-            <p><a href="mailto:palmeng@netsurfers.co.za">palmeng@netsurfers.co.za</a></p>
+            <p>
+                <a href="mailto:palmeng@netsurfers.co.za">
+                    palmeng@netsurfers.co.za
+                </a>
+            </p>
         </div>
+
         <div class="contact-item">
             <h4>🕒 Hours</h4>
             <p>
-                <strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br />
+                <strong>Monday - Friday:</strong> 8:00 AM – 5:00 PM<br />
                 <strong>Saturday:</strong> Closed<br />
                 <strong>Sunday:</strong> Closed
             </p>

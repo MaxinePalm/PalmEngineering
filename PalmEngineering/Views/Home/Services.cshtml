@@ -1,11 +1,20 @@
 ﻿@model List<PalmEngineering.Models.Service>
 @{
     ViewData["Title"] = "Our Services";
+    Layout = "_Layout";
 }
 
-<h1 style="color: #1e3c72; margin-bottom: 1rem;">Our Services</h1>
-<p style="color: #666; margin-bottom: 3rem; font-size: 1.1rem;">Comprehensive precision machining solutions for your most demanding projects</p>
+<h1 style="color: var(--primary); margin-bottom: 1rem;">
+    Our Services
+</h1>
 
+<p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
+    Comprehensive precision machining solutions for your most demanding projects
+</p>
+
+<div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1.5rem 0 3rem; border-radius: 2px;"></div>
+
+<!-- SERVICES GRID -->
 <div class="services-grid">
     @foreach (var service in Model)
     {
@@ -17,11 +26,19 @@
     }
 </div>
 
-<section style="margin-top: 4rem; background: #f8f9fa; padding: 2rem; border-radius: 10px;">
-    <h2 style="color: #1e3c72; margin-bottom: 1rem;">Materials We Work With</h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+<!-- MATERIALS SECTION -->
+<section style="margin-top: 4rem; background: var(--bg-light); padding: 2.5rem; border-radius: 12px;">
+
+    <h2 style="color: var(--primary); margin-top: 0;">
+        Materials We Work With
+    </h2>
+
+    <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 2rem; border-radius: 2px;"></div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem;">
+
         <div>
-            <h4>Metals</h4>
+            <h4 style="color: var(--primary); margin-bottom: 0.75rem;">Metals</h4>
             <ul class="capabilities">
                 <li>Aluminum (6061, 7075, MIC-6)</li>
                 <li>Steel (4140, 4340, A36)</li>
@@ -30,8 +47,9 @@
                 <li>Brass & Copper</li>
             </ul>
         </div>
+
         <div>
-            <h4>Plastics</h4>
+            <h4 style="color: var(--primary); margin-bottom: 0.75rem;">Plastics</h4>
             <ul class="capabilities">
                 <li>Delrin (Acetal)</li>
                 <li>PEEK</li>
@@ -40,5 +58,6 @@
                 <li>Acrylic</li>
             </ul>
         </div>
+
     </div>
 </section>

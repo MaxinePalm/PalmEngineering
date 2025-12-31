@@ -1,16 +1,35 @@
 ﻿@{
     ViewData["Title"] = "About Us";
+    Layout = "_Layout";
 }
 
-<h1 style="color: #1e3c72; margin-bottom: 2rem;">About Precision Engineering Solutions</h1>
+<h1 style="color: var(--primary); margin-bottom: 3rem;">
+    About Precision Engineering Solutions
+</h1>
 
 <div class="about-content">
-    <div class="about-text">
-        <h2>Your Partner in Precision Manufacturing</h2>
-        <p style="margin-bottom: 1rem;">With over 25 years of experience in precision engineering, we specialize in producing high-quality components for aerospace, medical, automotive, and industrial applications.</p>
-        <p style="margin-bottom: 1rem;">Our state-of-the-art facility houses the latest CNC milling centers, turning centers, and inspection equipment, enabling us to deliver parts with exceptional accuracy and repeatability.</p>
 
-        <h2 style="margin-top: 2rem;">Our Capabilities</h2>
+    <!-- LEFT COLUMN -->
+    <div class="about-text">
+
+        <!-- Partner Section -->
+        <h2 style="margin-top: 2.5rem;">Your Partner in Precision Manufacturing</h2>
+        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 1.5rem; border-radius: 2px;"></div>
+
+        <p style="margin-bottom: 1rem;">
+            With over 25 years of experience in precision engineering, we specialize in producing
+            high-quality components for aerospace, medical, automotive, and industrial applications.
+        </p>
+
+        <p style="margin-bottom: 1rem;">
+            Our state-of-the-art facility houses the latest CNC milling centers, turning centers,
+            and inspection equipment, enabling us to deliver parts with exceptional accuracy and repeatability.
+        </p>
+
+        <!-- Capabilities Section -->
+        <h2 style="margin-top: 3rem;">Our Capabilities</h2>
+        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 1.5rem; border-radius: 2px;"></div>
+
         <ul class="capabilities">
             <li>5-axis CNC milling up to 40" x 20" x 24"</li>
             <li>CNC turning with live tooling</li>
@@ -23,9 +42,17 @@
         </ul>
     </div>
 
+    <!-- RIGHT COLUMN -->
     <div>
-        <h2 style="color: #1e3c72; margin-bottom: 1rem;">Quality Standards</h2>
-        <p style="margin-bottom: 1rem;">We maintain the highest quality standards in every project:</p>
+
+        <!-- Quality Section -->
+        <h2 style="margin-top: 2.5rem;">Quality Standards</h2>
+        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 1.5rem; border-radius: 2px;"></div>
+
+        <p style="margin-bottom: 1rem;">
+            We maintain the highest quality standards in every project:
+        </p>
+
         <ul class="capabilities">
             <li>ISO 9001:2015 Certified</li>
             <li>AS9100 Aerospace Certified</li>
@@ -34,7 +61,10 @@
             <li>Full traceability and documentation</li>
         </ul>
 
-        <h2 style="color: #1e3c72; margin-top: 2rem; margin-bottom: 1rem;">Industries Served</h2>
+        <!-- Industries Section -->
+        <h2 style="margin-top: 3rem;">Industries Served</h2>
+        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 1.5rem; border-radius: 2px;"></div>
+
         <ul class="capabilities">
             <li>Aerospace & Defense</li>
             <li>Medical Devices</li>
@@ -43,5 +73,6 @@
             <li>Oil & Gas</li>
             <li>Robotics</li>
         </ul>
+
     </div>
 </div>
