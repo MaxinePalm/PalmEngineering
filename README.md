@@ -84,10 +84,6 @@ South Africa
 Monday - Friday: 8:00 AM - 5:00 PM  
 Saturday - Sunday: Closed
 
-## Request a Quote
-
-Visit our website or contact us directly to discuss your project requirements. We provide detailed quotes within 24 hours.
-
 ---
 
 © 2024 Palm Engineering. All rights reserved.
