@@ -67,11 +67,9 @@ PalmEngineering/
 
 ### Controllers
 - `HomeController.cs` - Main controller with Index, About, Services, Contact actions
-- `SendQuoteEmail()` - Saves quote requests to `quote_requests.txt`
 
 ### Models
 - `Service` - Properties: Id, Name, Description, IconClass
-- `QuoteRequest` - Form model with DataAnnotations validation
 - `ErrorViewModel` - Standard error handling
 
 ### Views
