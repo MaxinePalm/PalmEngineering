@@ -1,7 +1,8 @@
-﻿@model List<PalmEngineering.Models.Service>
+@model List<PalmEngineering.Models.Service>
 
 @{
     ViewData["Title"] = "Home";
+    ViewData["Description"] = "Palm Engineering: precision CNC machining, turning, grinding and custom engineering in Sidwell, Gqeberha. Over 30 years of experience.";
     Layout = "_Layout";
 }
 
@@ -10,9 +11,10 @@
     <div class="hero-content">
         <h1>Palm Engineering</h1>
         <p class="subtitle">Precision CNC Machining & Manufacturing Solutions</p>
-        <p class="tagline">Delivering exceptional quality components for demanding industries across South Africa</p>
+        <p class="tagline">Quality components supplied on time and at the right price, from our workshop in Gqeberha</p>
         <div>
             <a href="/Home/Services" class="btn btn-secondary">Our Services</a>
+            <a href="/Home/Gallery" class="btn btn-secondary">View Our Work</a>
         </div>
     </div>
 </div>
@@ -31,14 +33,14 @@
 <!-- Company Information -->
 <section style="background: white; padding: 2.5rem 2rem;">
     <div style="max-width: 1280px; margin: 0 auto; text-align: center;">
-        <h3 style="color: var(--primary); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">
-            MICROMATICA 908 (PTY) LTD t/a PALM ENGINEERING
-        </h3>
-        <p style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem;">Reg. No 2003/011854/07</p>
+        <h2 style="color: var(--primary); font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem;">
+            @Biz.LegalName.ToUpperInvariant() t/a @Biz.TradingName.ToUpperInvariant()
+        </h2>
+        <p class="reg-line" style="color: var(--text-light); font-size: 0.95rem; margin-bottom: 1rem;">Reg. No @Biz.RegistrationNumber</p>
         <p style="color: var(--text-dark); font-size: 1.15rem; font-weight: 500; margin-bottom: 1.5rem;">
             Specialising in General/Precision Engineering Tooling & Innovative Design for 30 years
         </p>
-        <div style="display: inline-block; background: linear-gradient(135deg, var(--secondary), var(--accent)); color: white; padding: 0.6rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem;">
+        <div style="display: inline-block; background: linear-gradient(135deg, var(--secondary-dark), var(--secondary)); color: white; padding: 0.6rem 1.5rem; border-radius: 6px; font-weight: 600; font-size: 0.95rem;">
             B-BBEE Rating Level 4
         </div>
     </div>
@@ -52,23 +54,23 @@
         <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem auto 2rem; border-radius: 2px;"></div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
             <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid var(--border);">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
-                <h4 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Service</h4>
+                <div aria-hidden="true" style="font-size: 2.5rem; margin-bottom: 0.5rem;">🎯</div>
+                <h3 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Service</h3>
                 <p style="color: var(--text-light); font-size: 0.9rem;">In pursuit of mutual value</p>
             </div>
             <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid var(--border);">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">💡</div>
-                <h4 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Innovation</h4>
+                <div aria-hidden="true" style="font-size: 2.5rem; margin-bottom: 0.5rem;">💡</div>
+                <h3 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Innovation</h3>
                 <p style="color: var(--text-light); font-size: 0.9rem;">In pursuit of mutual value</p>
             </div>
             <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid var(--border);">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚙️</div>
-                <h4 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Precision</h4>
+                <div aria-hidden="true" style="font-size: 2.5rem; margin-bottom: 0.5rem;">⚙️</div>
+                <h3 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Precision</h3>
                 <p style="color: var(--text-light); font-size: 0.9rem;">In pursuit of mutual value</p>
             </div>
             <div style="text-align: center; padding: 1.5rem; background: white; border-radius: 10px; border: 1px solid var(--border);">
-                <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">🤝</div>
-                <h4 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Integrity</h4>
+                <div aria-hidden="true" style="font-size: 2.5rem; margin-bottom: 0.5rem;">🤝</div>
+                <h3 style="color: var(--primary); font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem;">Integrity</h3>
                 <p style="color: var(--text-light); font-size: 0.9rem;">In pursuit of mutual value</p>
             </div>
         </div>
@@ -79,7 +81,7 @@
 <section style="padding: 3rem 2rem; background: white;">
     <div style="max-width: 1280px; margin: 0 auto;">
         <h2 class="section-title">Our Services</h2>
-        <p class="section-subtitle">Expert precision engineering with state-of-the-art CNC equipment</p>
+        <p class="section-subtitle">Expert precision engineering and CNC machining</p>
         <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1.5rem auto 2rem; border-radius: 2px;"></div>
 
         <div class="services-grid">
@@ -88,7 +90,7 @@
                 foreach (var service in Model)
                 {
                     <div class="service-card">
-                        <span class="service-icon">@service.IconClass</span>
+                        <span class="service-icon" aria-hidden="true">@service.IconClass</span>
                         <h3>@service.Name</h3>
                         <p>@service.Description</p>
                     </div>
@@ -99,23 +101,23 @@
 </section>
 
 <!-- Stats Section -->
-<section class="stats-section">
+<section class="stats-section" aria-label="Palm Engineering at a glance">
     <div class="stats-grid">
         <div class="stat-item">
             <span class="stat-number">30+</span>
             <span class="stat-label">Years Experience</span>
         </div>
         <div class="stat-item">
-            <span class="stat-number">±0.01mm</span>
-            <span class="stat-label">Precision Tolerance</span>
+            <span class="stat-number">Level 4</span>
+            <span class="stat-label">B-BBEE Rating</span>
         </div>
         <div class="stat-item">
-            <span class="stat-number">500+</span>
-            <span class="stat-label">Projects Completed</span>
+            <span class="stat-number">6</span>
+            <span class="stat-label">Core Services</span>
         </div>
         <div class="stat-item">
-            <span class="stat-number">ISO</span>
-            <span class="stat-label">Certified Quality</span>
+            <span class="stat-number">Mon-Fri</span>
+            <span class="stat-label">8:00 AM - 5:00 PM</span>
         </div>
     </div>
 </section>
@@ -127,19 +129,19 @@
         <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem auto 2rem; border-radius: 2px;"></div>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;">
             <div class="service-card">
-                <span class="service-icon">⚡</span>
-                <h3>Fast Turnaround</h3>
-                <p>Quick prototyping and efficient production runs to meet your deadlines</p>
+                <span class="service-icon" aria-hidden="true">⚡</span>
+                <h3>Reliable Turnaround</h3>
+                <p>Realistic lead times agreed upfront and delivered on time</p>
             </div>
             <div class="service-card">
-                <span class="service-icon">✅</span>
-                <h3>Quality Assured</h3>
-                <p>Comprehensive quality control and inspection throughout the manufacturing process</p>
+                <span class="service-icon" aria-hidden="true">✅</span>
+                <h3>Quality Checked</h3>
+                <p>Parts are checked throughout the manufacturing process</p>
             </div>
             <div class="service-card">
-                <span class="service-icon">🤝</span>
+                <span class="service-icon" aria-hidden="true">🤝</span>
                 <h3>Customer Focused</h3>
-                <p>Dedicated support from initial consultation through to final delivery</p>
+                <p>Direct support from first enquiry through to final delivery</p>
             </div>
         </div>
     </div>

@@ -1,236 +1,70 @@
-﻿@model List<PalmEngineering.Models.GalleryItem>
+@model IReadOnlyList<PalmEngineering.Models.GalleryItem>
 @{
     ViewData["Title"] = "Gallery";
-    Layout = "_Layout";
+    ViewData["Description"] = "A selection of precision engineering work from Palm Engineering: fixtures, rollers, manifolds, fittings and more.";
 }
 
-<h1 style="color: var(--primary); margin-bottom: 1rem;">
-    Project Gallery
-</h1>
+<h1 class="page-title">Project Gallery</h1>
 
-<p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
+<p class="page-lead">
     Showcasing our precision engineering work and capabilities
 </p>
 
-<div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1.5rem 0 3rem; border-radius: 2px;"></div>
+<div class="divider divider-left" style="margin: 1.5rem 0 2rem;"></div>
 
-<!-- GALLERY GRID -->
-<div class="gallery-grid">
+<div id="shortlist-bar" class="shortlist-bar" hidden>
+    <p>Your shortlist: <strong id="shortlist-count">0 items</strong> <span style="color: var(--text-light); font-weight: 400;">(saved on this device only)</span></p>
+    <a id="shortlist-mail" class="btn-primary" href="mailto:@Biz.Email" data-email="@Biz.Email">Email us about these</a>
+    <button type="button" id="shortlist-clear" class="btn-quiet">Clear</button>
+</div>
+
+<ul class="gallery-grid" id="gallery-grid">
     @foreach (var item in Model)
     {
-        <div class="gallery-item" onclick="openLightbox('@item.ImageUrl', '@item.Title', '@item.Description')">
-            <div class="gallery-image-container">
-                <img src="@item.ImageUrl" alt="@item.Title" loading="lazy">
-                <div class="gallery-overlay">
-                    <span class="gallery-icon">🔍</span>
-                </div>
-            </div>
+        <li class="gallery-item" id="item-@item.Slug">
+            <button type="button" class="gallery-open"
+                    aria-haspopup="dialog"
+                    aria-label="View larger photo: @item.Title"
+                    data-slug="@item.Slug"
+                    data-title="@item.Title"
+                    data-desc="@item.Description"
+                    data-alt="@item.Alt"
+                    data-src="@item.ImageUrl"
+                    data-w="@item.Width"
+                    data-h="@item.Height"
+                    data-hash="@item.BlurHash">
+                <span class="gallery-image-container skeleton" data-blurhash="@item.BlurHash">
+                    <canvas class="bh" width="32" height="32" aria-hidden="true"></canvas>
+                    <img class="fade-img" src="@item.ImageUrl" asp-append-version="true" alt="@item.Alt" width="@item.Width" height="@item.Height" loading="lazy" decoding="async" />
+                    <span class="gallery-overlay" aria-hidden="true"><span class="gallery-icon">🔍</span></span>
+                </span>
+            </button>
             <div class="gallery-caption">
-                <h3>@item.Title</h3>
+                <h2>@item.Title</h2>
                 <p>@item.Description</p>
             </div>
-        </div>
+            <button type="button" class="save-btn hit-slop" data-id="@item.Slug" data-title="@item.Title" aria-pressed="false" aria-label="Save @item.Title to shortlist">
+                <span class="save-icon" aria-hidden="true">&#9825;</span>
+                <span class="save-label" aria-hidden="true">Save</span>
+            </button>
+        </li>
     }
-</div>
+</ul>
 
-<!-- Lightbox Modal -->
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <div class="lightbox-content" onclick="event.stopPropagation()">
-        <img id="lightbox-img" src="" alt="">
-        <div class="lightbox-info">
-            <h2 id="lightbox-title"></h2>
-            <p id="lightbox-description"></p>
+<dialog id="lightbox" class="sheet lightbox" aria-labelledby="lb-title">
+    <div class="sheet-body">
+        <div class="sheet-grip" data-drag aria-hidden="true"></div>
+        <button type="button" class="lb-close hit-slop" data-sheet-close aria-label="Close">&times;</button>
+        <div id="lb-media" class="lb-media skeleton" data-blurhash="" data-drag>
+            <canvas class="bh" width="32" height="32" aria-hidden="true"></canvas>
+            <img id="lb-img" class="fade-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="" width="4" height="3" decoding="async" />
+            <button type="button" id="lb-prev" class="lb-nav lb-prev hit-slop" aria-label="Previous photo">&#8249;</button>
+            <button type="button" id="lb-next" class="lb-nav lb-next hit-slop" aria-label="Next photo">&#8250;</button>
+        </div>
+        <div class="lb-info">
+            <h2 id="lb-title"></h2>
+            <p id="lb-desc"></p>
+            <p class="lb-hints kbd-hint" aria-hidden="true"><kbd>&larr;</kbd><kbd>&rarr;</kbd> browse <kbd>Esc</kbd> close</p>
         </div>
     </div>
-</div>
-
-<style>
-    .gallery-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 2rem;
-        margin-top: 2rem;
-    }
-
-    .gallery-item {
-        background: white;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid var(--border);
-        transition: all 0.3s;
-        cursor: pointer;
-    }
-
-        .gallery-item:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-    .gallery-image-container {
-        position: relative;
-        width: 100%;
-        height: 280px;
-        overflow: hidden;
-        background: var(--bg-light);
-    }
-
-        .gallery-image-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-    .gallery-item:hover .gallery-image-container img {
-        transform: scale(1.1);
-    }
-
-    .gallery-overlay {
-        position: absolute;
-        inset: 0;
-        background: rgba(15, 37, 87, 0.8);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s;
-    }
-
-    .gallery-item:hover .gallery-overlay {
-        opacity: 1;
-    }
-
-    .gallery-icon {
-        font-size: 3rem;
-        color: white;
-    }
-
-    .gallery-caption {
-        padding: 1.5rem;
-    }
-
-        .gallery-caption h3 {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .gallery-caption p {
-            color: var(--text-light);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-    /* Lightbox Styles */
-    .lightbox {
-        display: none;
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.95);
-        z-index: 9999;
-        align-items: center;
-        justify-content: center;
-        padding: 2rem;
-    }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-    .lightbox-close {
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        font-size: 3rem;
-        color: white;
-        cursor: pointer;
-        z-index: 10001;
-        transition: transform 0.2s;
-    }
-
-        .lightbox-close:hover {
-            transform: scale(1.2);
-        }
-
-    .lightbox-content {
-        max-width: 1200px;
-        width: 100%;
-        background: white;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    }
-
-        .lightbox-content img {
-            width: 100%;
-            max-height: 70vh;
-            object-fit: contain;
-            background: #f8f9fa;
-        }
-
-    .lightbox-info {
-        padding: 2rem;
-    }
-
-        .lightbox-info h2 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .lightbox-info p {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-    @@media (max-width: 768px) {
-        .gallery-grid {
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
-
-        .lightbox {
-            padding: 1rem;
-        }
-
-        .lightbox-close {
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
-        }
-
-        .lightbox-info {
-            padding: 1.5rem;
-        }
-
-            .lightbox-info h2 {
-                font-size: 1.4rem;
-            }
-    }
-</style>
-
-<script>
-    function openLightbox(imageUrl, title, description) {
-        const lightbox = document.getElementById('lightbox');
-        document.getElementById('lightbox-img').src = imageUrl;
-        document.getElementById('lightbox-title').textContent = title;
-        document.getElementById('lightbox-description').textContent = description;
-
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-            closeLightbox();
-        }
-    });
-</script>
+</dialog>

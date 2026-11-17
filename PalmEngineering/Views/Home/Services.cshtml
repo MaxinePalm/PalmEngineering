@@ -1,55 +1,51 @@
-﻿@model List<PalmEngineering.Models.Service>
+@model List<PalmEngineering.Models.Service>
 @{
     ViewData["Title"] = "Our Services";
-    Layout = "_Layout";
+    ViewData["Description"] = "CNC milling, CNC turning, grinding, wire EDM, inspection and prototyping from Palm Engineering in Gqeberha.";
 }
 
-<h1 style="color: var(--primary); margin-bottom: 1rem;">
-    Our Services
-</h1>
+<h1 class="page-title">Our Services</h1>
 
-<p style="color: var(--text-light); font-size: 1.1rem; margin-bottom: 1.5rem;">
-    Comprehensive precision machining solutions for your most demanding projects
+<p class="page-lead">
+    Precision machining solutions for your projects
 </p>
 
-<div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1.5rem 0 3rem; border-radius: 2px;"></div>
+<div class="divider divider-left" style="margin: 1.5rem 0 3rem;"></div>
 
-<!-- SERVICES GRID -->
 <div class="services-grid">
     @foreach (var service in Model)
     {
         <div class="service-card">
-            <div class="service-icon">@service.IconClass</div>
-            <h3>@service.Name</h3>
+            <div class="service-icon" aria-hidden="true">@service.IconClass</div>
+            <h2 style="font-size: 1.5rem;">@service.Name</h2>
             <p>@service.Description</p>
         </div>
     }
 </div>
 
-<!-- MATERIALS SECTION -->
-<section style="margin-top: 4rem; background: var(--bg-light); padding: 2.5rem; border-radius: 12px;">
+<section style="margin-top: 4rem; background: var(--bg-light); padding: 2.5rem; border-radius: 12px;" aria-labelledby="materials-heading">
 
-    <h2 style="color: var(--primary); margin-top: 0;">
+    <h2 id="materials-heading" style="color: var(--primary); margin-top: 0;">
         Materials We Work With
     </h2>
 
-    <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 2rem; border-radius: 2px;"></div>
+    <div class="divider divider-left" style="margin: 1rem 0 2rem;"></div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 2rem;">
 
         <div>
-            <h4 style="color: var(--primary); margin-bottom: 0.75rem;">Metals</h4>
+            <h3 style="color: var(--primary); margin-bottom: 0.75rem;">Metals</h3>
             <ul class="capabilities">
-                <li>Aluminum (6061, 7075, MIC-6)</li>
+                <li>Aluminium (6061, 7075, MIC-6)</li>
                 <li>Steel (4140, 4340, A36)</li>
                 <li>Stainless Steel (304, 316, 17-4 PH)</li>
                 <li>Titanium (Grade 5, Grade 2)</li>
-                <li>Brass & Copper</li>
+                <li>Brass &amp; Copper</li>
             </ul>
         </div>
 
         <div>
-            <h4 style="color: var(--primary); margin-bottom: 0.75rem;">Plastics</h4>
+            <h3 style="color: var(--primary); margin-bottom: 0.75rem;">Plastics</h3>
             <ul class="capabilities">
                 <li>Delrin (Acetal)</li>
                 <li>PEEK</li>
