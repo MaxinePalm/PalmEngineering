@@ -2,6 +2,10 @@ namespace PalmEngineering.Models
 {
     public class GalleryItem
     {
+<<<<<<< Updated upstream
+=======
+        public int Id { get; set; }
+>>>>>>> Stashed changes
         public string Slug { get; set; } = string.Empty;
         public string Title { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;

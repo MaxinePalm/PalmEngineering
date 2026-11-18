@@ -263,6 +263,11 @@
     var cmdList = $('#cmd-list');
     var cmdItems = cmdList ? $$('[role="option"]', cmdList) : [];
     var cmdEmpty = $('#cmd-empty');
+<<<<<<< Updated upstream
+=======
+    var activeIdx = -1;
+
+>>>>>>> Stashed changes
     cmdItems.forEach(function (li, i) { li.id = 'cmd-opt-' + i; });
 
     function visibleItems() { return cmdItems.filter(function (li) { return !li.hidden; }); }
@@ -313,9 +318,12 @@
         } else if (action === 'clear-shortlist') {
             requestClose(cmd);
             clearShortlist();
+<<<<<<< Updated upstream
         } else if (action === 'toggle-theme') {
             requestClose(cmd);
             if (window.palmToggleTheme) window.palmToggleTheme();
+=======
+>>>>>>> Stashed changes
         }
     }
 
@@ -328,7 +336,11 @@
     }
 
     if (cmd) {
+<<<<<<< Updated upstream
         $$('#cmd-open').forEach(function (b) { b.addEventListener('click', openCmd); });
+=======
+        $$('#cmd-open, [data-cmd-open]').forEach(function (b) { b.addEventListener('click', openCmd); });
+>>>>>>> Stashed changes
         cmdInput.addEventListener('input', filterCmd);
         cmdInput.addEventListener('keydown', function (e) {
             var vis = visibleItems();
@@ -460,4 +472,22 @@
             prefetch(e.target.closest && e.target.closest('a[href]'));
         }, { passive: true });
     }
+<<<<<<< Updated upstream
+=======
+
+    /* ---------- Cookie notice (informational: no non-essential cookies are used) ---------- */
+    var notice = $('#cookie-notice');
+    if (notice) {
+        var NKEY = 'palm.cookie-notice.v1';
+        if (!store.get(NKEY, false)) {
+            notice.hidden = false;
+            document.body.classList.add('has-cookie-notice');
+            $('#cookie-ok').addEventListener('click', function () {
+                store.set(NKEY, true);
+                notice.hidden = true;
+                document.body.classList.remove('has-cookie-notice');
+            });
+        }
+    }
+>>>>>>> Stashed changes
 })();

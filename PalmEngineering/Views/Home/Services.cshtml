@@ -4,6 +4,7 @@
     ViewData["Description"] = "CNC milling, CNC turning, grinding, wire EDM, inspection and prototyping from Palm Engineering in Gqeberha.";
 }
 
+<<<<<<< Updated upstream
 <h1 class="page-title">Our Services</h1>
 
 <p class="page-lead">
@@ -12,11 +13,28 @@
 
 <div class="divider divider-left divider-wide"></div>
 
+=======
+@section Hero {
+    <div class="page-banner">
+        <div class="page-banner-inner">
+            <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Services</li></ol></nav>
+            <h1>Our Services</h1>
+            <p>Precision machining solutions for your projects.</p>
+        </div>
+    </div>
+}
+
+<div class="container">
+>>>>>>> Stashed changes
 <div class="services-grid">
     @foreach (var service in Model)
     {
         <div class="service-card">
+<<<<<<< Updated upstream
             <div class="service-icon" aria-hidden="true">@service.Icon</div>
+=======
+            <span class="service-icon">@Icons.Svg(service.IconClass)</span>
+>>>>>>> Stashed changes
             <h2>@service.Name</h2>
             <p>@service.Description</p>
         </div>
@@ -24,6 +42,7 @@
 </div>
 
 <section class="materials" aria-labelledby="materials-heading">
+<<<<<<< Updated upstream
 
     <h2 id="materials-heading">
         Materials We Work With
@@ -33,6 +52,10 @@
 
     <div class="materials-grid">
 
+=======
+    <h2 id="materials-heading">Materials we work with</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 2rem;">
+>>>>>>> Stashed changes
         <div>
             <h3>Metals</h3>
             <ul class="capabilities">
@@ -43,7 +66,6 @@
                 <li>Brass &amp; Copper</li>
             </ul>
         </div>
-
         <div>
             <h3>Plastics</h3>
             <ul class="capabilities">
@@ -54,6 +76,6 @@
                 <li>Acrylic</li>
             </ul>
         </div>
-
     </div>
 </section>
+</div>

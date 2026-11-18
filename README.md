@@ -39,6 +39,23 @@ Empty values are hidden on the site. Do not commit secrets: use `dotnet user-sec
 
 ## Security notes
 
+<<<<<<< Updated upstream
 Security headers and a CSP are set in `Program.cs`, per-IP rate limiting is enabled, and the site sets no cookies.
 No third-party scripts or fonts are loaded (Inter is self-hosted). The only data kept in the browser is the
 gallery shortlist and the theme choice (see the Privacy Policy).
+=======
+## Dependencies
+
+No additional NuGet packages required beyond default ASP.NET Core MVC template.
+
+
+## Configuration
+
+Legal and contact details live in `appsettings.json` under `Business` (VAT number, directors, Information Officer).
+Empty values are hidden on the site. Do not commit secrets: use `dotnet user-secrets` or environment variables.
+
+## Security notes
+
+Security headers and a CSP are set in `Program.cs`, per-IP rate limiting is enabled, and the site sets no cookies.
+No third-party scripts or fonts are loaded (Inter is self-hosted).
+>>>>>>> Stashed changes
