@@ -26,13 +26,10 @@ namespace PalmEngineering.Controllers
         public IActionResult Privacy() => View();
 
         [AcceptVerbs("GET", "HEAD")]
-<<<<<<< Updated upstream
-=======
         [Route("cookies")]
         public IActionResult Cookies() => View();
 
         [AcceptVerbs("GET", "HEAD")]
->>>>>>> Stashed changes
         [Route("terms")]
         public IActionResult Terms() => View();
 
@@ -50,21 +47,12 @@ namespace PalmEngineering.Controllers
 
         private static List<Service> GetServices() => new()
         {
-<<<<<<< Updated upstream
-            new Service { Name = "CNC Milling", Description = "High-precision CNC milling for complex parts with tight tolerances", Icon = "⚙️" },
-            new Service { Name = "CNC Turning", Description = "Advanced lathe work for cylindrical components and rotational parts", Icon = "🔄" },
-            new Service { Name = "Precision Grinding", Description = "Surface and cylindrical grinding for superior surface finish", Icon = "💎" },
-            new Service { Name = "Wire EDM", Description = "Electrical discharge machining for intricate profiles and hard materials", Icon = "⚡" },
-            new Service { Name = "Quality Inspection", Description = "Inspection and quality checks with documented results", Icon = "🔍" },
-            new Service { Name = "Prototyping", Description = "Rapid prototyping services from concept to finished part", Icon = "🔧" }
-=======
             new Service { Id = 1, Name = "CNC Milling", Description = "High-precision CNC milling for complex parts with tight tolerances", IconClass = "mill" },
             new Service { Id = 2, Name = "CNC Turning", Description = "Advanced lathe work for cylindrical components and rotational parts", IconClass = "turn" },
             new Service { Id = 3, Name = "Precision Grinding", Description = "Surface and cylindrical grinding for superior surface finish", IconClass = "grind" },
             new Service { Id = 4, Name = "Wire EDM", Description = "Electrical discharge machining for intricate profiles and hard materials", IconClass = "bolt" },
             new Service { Id = 5, Name = "Quality Inspection", Description = "Inspection and quality checks with documented results", IconClass = "inspect" },
             new Service { Id = 6, Name = "Prototyping", Description = "Rapid prototyping services from concept to finished part", IconClass = "cube" }
->>>>>>> Stashed changes
         };
     }
 }

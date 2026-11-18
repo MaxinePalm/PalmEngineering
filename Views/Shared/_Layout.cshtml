@@ -16,10 +16,7 @@
         new { Label = "Gallery", Href = "/Home/Gallery", Keys = "g g", Kw = "gallery photos projects" },
         new { Label = "Contact", Href = "/Home/Contact", Keys = "g c", Kw = "contact phone email address hours" },
         new { Label = "Privacy Policy", Href = "/privacy", Keys = "", Kw = "privacy popia data" },
-<<<<<<< Updated upstream
-=======
         new { Label = "Cookie Policy", Href = "/cookies", Keys = "", Kw = "cookies local storage tracking" },
->>>>>>> Stashed changes
         new { Label = "Terms of Use", Href = "/terms", Keys = "", Kw = "terms conditions legal" }
     };
     var description = ViewData["Description"] as string
@@ -31,17 +28,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content="@description" />
-<<<<<<< Updated upstream
-    <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#0f2557" />
     <title>@ViewData["Title"] - Palm Engineering</title>
     <link rel="preload" href="~/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
-    <script src="~/js/theme.js" asp-append-version="true"></script>
-=======
-    <meta name="theme-color" content="#0f2557" />
-    <title>@ViewData["Title"] - Palm Engineering</title>
-    <link rel="preload" href="~/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
->>>>>>> Stashed changes
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <script type="speculationrules">
     {"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
@@ -50,13 +39,6 @@
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
 
-<<<<<<< Updated upstream
-    <header>
-        <div class="header-content">
-            <a href="/" class="logo" aria-label="Palm Engineering home">
-                <span class="logo-icon" aria-hidden="true">⚙️</span>
-                <span>Palm Engineering</span>
-=======
     <div class="topbar">
         <div class="topbar-inner">
             <div class="topbar-group">
@@ -78,7 +60,6 @@
                     <span class="logo-name">Palm Engineering</span>
                     <span class="logo-sub">PRECISION CNC MACHINING</span>
                 </span>
->>>>>>> Stashed changes
             </a>
             <div class="header-right">
                 <nav aria-label="Main">
@@ -93,42 +74,16 @@
                     <span>Search</span>
                     <kbd class="kbd-hint" aria-hidden="true"><span data-mod>Ctrl</span> K</kbd>
                 </button>
-<<<<<<< Updated upstream
-                <button type="button" class="theme-toggle hit-slop" data-theme-toggle aria-label="Switch to dark mode">
-                    <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" /></svg>
-                    <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="4" /><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" /></svg>
-                </button>
-=======
->>>>>>> Stashed changes
             </div>
         </div>
     </header>
 
     <main id="main" tabindex="-1">
-<<<<<<< Updated upstream
-=======
         @RenderSection("Hero", required: false)
->>>>>>> Stashed changes
         @RenderBody()
     </main>
 
     <footer>
-<<<<<<< Updated upstream
-        <p class="footer-title">&copy; @DateTime.Now.Year @Biz.LegalName t/a @Biz.TradingName</p>
-        <p class="reg-line">
-            Reg. No @Biz.RegistrationNumber
-            @if (!string.IsNullOrWhiteSpace(Biz.VatNumber))
-            {
-                <text>| VAT No @Biz.VatNumber</text>
-            }
-        </p>
-        <p>Precision CNC Machining | Quality Engineering Solutions</p>
-        <p class="footer-address">@Biz.StreetAddress, @Biz.Suburb, @Biz.City, @Biz.PostalCode</p>
-        <nav class="footer-links" aria-label="Legal">
-            <a class="hit-slop" href="/privacy">Privacy Policy</a>
-            <a class="hit-slop" href="/terms">Terms of Use</a>
-        </nav>
-=======
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="/" class="logo" aria-label="Palm Engineering home">
@@ -176,7 +131,6 @@
                 </span>
             </div>
         </div>
->>>>>>> Stashed changes
     </footer>
 
     <dialog id="cmd" class="sheet cmd" aria-label="Command menu">
@@ -208,10 +162,6 @@
                 <li role="option" aria-selected="false" data-href="mailto:@Biz.Email" data-kw="email write message"><span>Email @Biz.Email</span></li>
                 <li role="option" aria-selected="false" data-copy="@Biz.Email" data-label="Email address" data-kw="copy email"><span>Copy email address</span></li>
                 <li role="option" aria-selected="false" data-copy="@Biz.FullAddress" data-label="Address" data-kw="copy address location"><span>Copy address</span></li>
-<<<<<<< Updated upstream
-                <li role="option" aria-selected="false" data-action="toggle-theme" data-kw="theme dark light mode appearance"><span>Toggle dark mode</span></li>
-=======
->>>>>>> Stashed changes
                 <li role="option" aria-selected="false" data-action="clear-shortlist" data-kw="clear shortlist saved gallery"><span>Clear gallery shortlist</span></li>
                 <li class="cmd-group" role="presentation">Gallery</li>
                 @foreach (var g in GalleryCatalog.Items)
@@ -223,14 +173,11 @@
         </div>
     </dialog>
 
-<<<<<<< Updated upstream
-=======
     <div id="cookie-notice" class="cookie-notice" role="region" aria-label="Cookie notice" hidden>
         <p>This site sets no tracking or advertising cookies. It only remembers your gallery shortlist on your device if you use it. <a href="/cookies">Cookie Policy</a></p>
         <button type="button" id="cookie-ok" class="btn-quiet">Got it</button>
     </div>
 
->>>>>>> Stashed changes
     <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
 
     <script src="~/js/blurhash.js" asp-append-version="true" defer></script>

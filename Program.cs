@@ -116,18 +116,7 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseRouting();
 app.UseRateLimiter();
-<<<<<<< Updated upstream
-
-// Static files skip dot-folders, so serve security.txt explicitly.
-app.MapGet("/.well-known/security.txt", (BusinessInfo biz) =>
-    Results.Text(
-        $"Contact: mailto:{biz.Email}\n" +
-        $"Expires: {DateTime.UtcNow.AddMonths(11):yyyy-MM-ddTHH:mm:ss.000Z}\n" +
-        "Preferred-Languages: en\n",
-        "text/plain; charset=utf-8"));
-=======
 app.UseAuthorization();
->>>>>>> Stashed changes
 
 // Static files skip dot-folders, so serve security.txt explicitly.
 app.MapGet("/.well-known/security.txt", (BusinessInfo biz) =>

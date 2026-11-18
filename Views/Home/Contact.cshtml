@@ -1,8 +1,6 @@
 @{
     ViewData["Title"] = "Contact Us";
     ViewData["Description"] = "Contact Palm Engineering at 242 Commercial Rd, Sidwell, Gqeberha. Phone, email and opening hours.";
-<<<<<<< Updated upstream
-=======
 }
 @section Hero {
     <div class="page-banner">
@@ -12,7 +10,6 @@
             <p>Call, email or visit our workshop in Gqeberha.</p>
         </div>
     </div>
->>>>>>> Stashed changes
 }
 
 <section class="band-paper contact-band" aria-labelledby="contact-h">
@@ -31,53 +28,6 @@
                 <button type="button" class="btn-quiet" data-copy-btn="@Biz.FullAddress" data-label="Address">Copy address</button>
             </div>
 
-<<<<<<< Updated upstream
-    <h1 class="contact-title">
-        Contact Information
-    </h1>
-
-    <div class="divider divider-contact"></div>
-
-    <div class="contact-grid">
-        <div class="contact-item">
-            <h2><span aria-hidden="true">📍</span> Location</h2>
-            <p>
-                @Biz.StreetAddress<br />
-                @Biz.Suburb, @Biz.City<br />
-                @Biz.Province, @Biz.PostalCode
-            </p>
-            <button type="button" class="btn-quiet" data-copy-btn="@Biz.FullAddress" data-label="Address">Copy address</button>
-        </div>
-
-        <div class="contact-item">
-            <h2><span aria-hidden="true">📞</span> Phone</h2>
-            <p>
-                <strong>Preferred:</strong>
-                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)">@Biz.PreferredPhone</a><br />
-                Alternative:
-                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.AlternativePhone)">@Biz.AlternativePhone</a><br />
-                Work:
-                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.WorkPhone)">@Biz.WorkPhone</a>
-            </p>
-        </div>
-
-        <div class="contact-item">
-            <h2><span aria-hidden="true">📧</span> Email</h2>
-            <p>
-                <a class="hit-slop" href="mailto:@Biz.Email">@Biz.Email</a>
-            </p>
-            <button type="button" class="btn-quiet" data-copy-btn="@Biz.Email" data-label="Email address">Copy email</button>
-        </div>
-
-        <div class="contact-item">
-            <h2><span aria-hidden="true">🕒</span> Hours</h2>
-            <p class="hours">
-                <strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br />
-                <strong>Saturday:</strong> Closed<br />
-                <strong>Sunday:</strong> Closed
-            </p>
-        </div>
-=======
             <div class="contact-item">
                 <h2>@Icons.Svg("phone") Phone</h2>
                 <p>
@@ -123,22 +73,5 @@
         }
         <p>Physical address: @Biz.FullAddress</p>
     </div>
->>>>>>> Stashed changes
-    </div>
-
-    <div class="legal-box">
-        <p><strong>@Biz.LegalName</strong> trading as <strong>@Biz.TradingName</strong></p>
-        <p class="reg-line">
-            Registration No @Biz.RegistrationNumber
-            @if (!string.IsNullOrWhiteSpace(Biz.VatNumber))
-            {
-                <text>| VAT No @Biz.VatNumber</text>
-            }
-        </p>
-        @if (!string.IsNullOrWhiteSpace(Biz.Directors))
-        {
-            <p>Directors: @Biz.Directors</p>
-        }
-        <p>Physical address: @Biz.FullAddress</p>
     </div>
 </section>

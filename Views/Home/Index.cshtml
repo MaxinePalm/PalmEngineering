@@ -1,33 +1,4 @@
 @model List<PalmEngineering.Models.Service>
-<<<<<<< Updated upstream
-@{
-    ViewData["Title"] = "Home";
-    ViewData["Description"] = "Palm Engineering: precision CNC machining, turning, grinding and custom engineering in Sidwell, Gqeberha. Over 30 years of experience.";
-
-    var values = new[]
-    {
-        new { Icon = "🎯", Name = "Service" },
-        new { Icon = "💡", Name = "Innovation" },
-        new { Icon = "⚙️", Name = "Precision" },
-        new { Icon = "🤝", Name = "Integrity" }
-    };
-    var reasons = new[]
-    {
-        new { Icon = "⚡", Name = "Reliable Turnaround", Text = "Realistic lead times agreed upfront and delivered on time" },
-        new { Icon = "✅", Name = "Quality Checked", Text = "Parts are checked throughout the manufacturing process" },
-        new { Icon = "🤝", Name = "Customer Focused", Text = "Direct support from first enquiry through to final delivery" }
-    };
-}
-
-<div class="hero">
-    <div class="hero-content">
-        <h1>Palm Engineering</h1>
-        <p class="subtitle">Precision CNC Machining &amp; Manufacturing Solutions</p>
-        <p class="tagline">Quality components supplied on time and at the right price, from our workshop in Gqeberha</p>
-        <div class="hero-actions">
-            <a href="/Home/Services" class="btn btn-secondary">Our Services</a>
-            <a href="/Home/Gallery" class="btn btn-secondary">View Our Work</a>
-=======
 
 @{
     ViewData["Title"] = "Home";
@@ -57,7 +28,6 @@
                 <a href="/Home/Contact" class="btn">Contact us</a>
                 <a href="/Home/Gallery" class="btn btn-outline">View our work</a>
             </div>
->>>>>>> Stashed changes
         </div>
 
         <svg class="hero-drawing" viewBox="0 0 560 330" aria-hidden="true" focusable="false">
@@ -96,70 +66,6 @@
     </dl>
 </div>
 
-<<<<<<< Updated upstream
-<section class="band band-fade">
-    <h2 class="band-title">Our Mission</h2>
-    <p class="mission">"Quality Products supplied on time at the right price to satisfied customers who keep coming back"</p>
-    <div class="divider"></div>
-</section>
-
-<section class="band">
-    <h2 class="company-name">@Biz.LegalName.ToUpperInvariant() t/a @Biz.TradingName.ToUpperInvariant()</h2>
-    <p class="reg-line company-reg">Reg. No @Biz.RegistrationNumber</p>
-    <p class="company-blurb">Specialising in General/Precision Engineering Tooling &amp; Innovative Design for 30 years</p>
-    <div class="badge">B-BBEE Rating Level 4</div>
-    <div class="divider"></div>
-</section>
-
-<section class="band band-soft">
-    <h2 class="section-title">Our Core Values</h2>
-    <div class="divider"></div>
-    <div class="band-grid values">
-        @foreach (var v in values)
-        {
-            <div class="value">
-                <span class="value-icon" aria-hidden="true">@v.Icon</span>
-                <h3>@v.Name</h3>
-                <p>In pursuit of mutual value</p>
-            </div>
-        }
-    </div>
-</section>
-
-<section class="band">
-    <h2 class="section-title">Our Services</h2>
-    <p class="section-subtitle">Expert precision engineering and CNC machining</p>
-    <div class="divider"></div>
-    <div class="services-grid">
-        @foreach (var service in Model)
-        {
-            <div class="service-card">
-                <span class="service-icon" aria-hidden="true">@service.Icon</span>
-                <h3>@service.Name</h3>
-                <p>@service.Description</p>
-            </div>
-        }
-    </div>
-</section>
-
-<section class="stats-section" aria-label="Palm Engineering at a glance">
-    <div class="stats-grid">
-        <div class="stat-item">
-            <span class="stat-number">30+</span>
-            <span class="stat-label">Years Experience</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">Level 4</span>
-            <span class="stat-label">B-BBEE Rating</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">@Model.Count</span>
-            <span class="stat-label">Core Services</span>
-        </div>
-        <div class="stat-item">
-            <span class="stat-number">Mon-Fri</span>
-            <span class="stat-label">8:00 AM - 5:00 PM</span>
-=======
 <section class="band">
     <div class="inner">
         <blockquote class="mission">
@@ -206,27 +112,10 @@
                     <p>@v.Text</p>
                 </div>
             }
->>>>>>> Stashed changes
         </div>
     </div>
 </section>
 
-<<<<<<< Updated upstream
-<section class="band band-soft">
-    <h2 class="section-title">Why Choose Palm Engineering?</h2>
-    <div class="divider"></div>
-    <div class="band-grid why">
-        @foreach (var r in reasons)
-        {
-            <div class="service-card">
-                <span class="service-icon" aria-hidden="true">@r.Icon</span>
-                <h3>@r.Name</h3>
-                <p>@r.Text</p>
-            </div>
-        }
-    </div>
-</section>
-=======
 <section class="band band-paper" aria-labelledby="why-h">
     <div class="inner">
         <div class="section-head">
@@ -257,4 +146,3 @@
         </div>
     </div>
 </section>
->>>>>>> Stashed changes
