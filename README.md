@@ -6,7 +6,7 @@ It is an information site: no database, no forms, no accounts, no cookies.
 ## Run
 
 ```bash
-dotnet run --project PalmEngineering
+dotnet run
 ```
 
 Then open `http://localhost:5206` (or `https://localhost:7284`).
@@ -14,14 +14,22 @@ Then open `http://localhost:5206` (or `https://localhost:7284`).
 ## Structure
 
 ```
-PalmEngineering/
-  Program.cs                 Pipeline: security headers + CSP, HSTS, rate limiting, static file caching
-  Controllers/HomeController Pages: Index, About, Services, Gallery, Contact, Privacy, Terms, Error
-  Models/                    BusinessInfo (legal/contact details), Service, GalleryItem + GalleryCatalog, ErrorViewModel
-  Views/                     Razor views; _Layout holds the header, footer and command menu
-  wwwroot/css/site.css       All styles (design tokens at the top)
-  wwwroot/js/site.js         Command menu, gallery lightbox, shortlist, toasts, shortcuts
-  wwwroot/js/blurhash.js     Image placeholders
+PalmEngineering.slnx         Solution
+PalmEngineering.csproj       Project
+Program.cs                   Pipeline: security headers + CSP, HSTS, rate limiting, static file caching
+appsettings.json             Business details (VAT number, directors, Information Officer)
+Controllers/                 HomeController: Index, About, Services, Gallery, Contact, Privacy, Cookies, Terms, Error
+Models/                      BusinessInfo, Service, GalleryItem, GalleryCatalog, Icons, ErrorViewModel
+Views/
+  Shared/                    _Layout (header, footer, command menu) and Error
+  Home/                      One view per page
+Properties/                  launchSettings.json
+wwwroot/
+  css/site.css               All styles (design tokens at the top)
+  js/site.js                 Command menu, gallery lightbox, shortlist, toasts, shortcuts
+  js/blurhash.js             Image placeholders
+  fonts/                     Self-hosted Inter and its licence
+  images/gallery/            Project photos
 ```
 
 ## Design
