@@ -3,7 +3,6 @@
     ViewData["Title"] = Model.StatusCode == 404 ? "Page not found" : "Something went wrong";
 }
 
-<div class="container">
 <div class="error-page">
     @if (Model.StatusCode == 404)
     {
@@ -27,5 +26,4 @@
     }
 
     <a href="/" class="btn-primary">Return to Home</a>
-</div>
 </div>

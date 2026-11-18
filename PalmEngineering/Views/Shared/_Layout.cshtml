@@ -16,7 +16,6 @@
         new { Label = "Gallery", Href = "/Home/Gallery", Keys = "g g", Kw = "gallery photos projects" },
         new { Label = "Contact", Href = "/Home/Contact", Keys = "g c", Kw = "contact phone email address hours" },
         new { Label = "Privacy Policy", Href = "/privacy", Keys = "", Kw = "privacy popia data" },
-        new { Label = "Cookie Policy", Href = "/cookies", Keys = "", Kw = "cookies local storage tracking" },
         new { Label = "Terms of Use", Href = "/terms", Keys = "", Kw = "terms conditions legal" }
     };
     var description = ViewData["Description"] as string
@@ -39,27 +38,11 @@
 <body>
     <a class="skip-link" href="#main">Skip to main content</a>
 
-    <div class="topbar">
-        <div class="topbar-inner">
-            <div class="topbar-group">
-                <a href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)">@Icons.Svg("phone") <span class="tnum">@Biz.PreferredPhone</span></a>
-                <a href="mailto:@Biz.Email">@Icons.Svg("mail") <span>@Biz.Email</span></a>
-            </div>
-            <div class="topbar-group">
-                <span>@Icons.Svg("clock") <span class="hours">Mon-Fri 8:00 AM - 5:00 PM</span></span>
-                <span>@Icons.Svg("pin") <span>@Biz.Suburb, @Biz.City</span></span>
-            </div>
-        </div>
-    </div>
-
     <header>
         <div class="header-content">
             <a href="/" class="logo" aria-label="Palm Engineering home">
-                <span class="logo-icon">@Icons.Svg("gear")</span>
-                <span class="logo-text">
-                    <span class="logo-name">Palm Engineering</span>
-                    <span class="logo-sub">PRECISION CNC MACHINING</span>
-                </span>
+                <span class="logo-icon" aria-hidden="true">⚙️</span>
+                <span>Palm Engineering</span>
             </a>
             <div class="header-right">
                 <nav aria-label="Main">
@@ -79,58 +62,24 @@
     </header>
 
     <main id="main" tabindex="-1">
-        @RenderSection("Hero", required: false)
         @RenderBody()
     </main>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="/" class="logo" aria-label="Palm Engineering home">
-                    <span class="logo-icon">@Icons.Svg("gear")</span>
-                    <span class="logo-text">
-                        <span class="logo-name">Palm Engineering</span>
-                        <span class="logo-sub">PRECISION CNC MACHINING</span>
-                    </span>
-                </a>
-                <p>General and precision engineering, tooling and innovative design for over 30 years.</p>
-                <span class="chip">B-BBEE Rating Level 4</span>
-            </div>
-            <div>
-                <h2>Explore</h2>
-                <ul>
-                    @foreach (var n in nav)
-                    {
-                        <li><a href="@n.Href">@n.Label</a></li>
-                    }
-                </ul>
-            </div>
-            <div>
-                <h2>Contact</h2>
-                <p>@Biz.StreetAddress<br />@Biz.Suburb, @Biz.City<br />@Biz.Province, @Biz.PostalCode</p>
-                <p><a href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)" class="tnum">@Biz.PreferredPhone</a><br /><a href="mailto:@Biz.Email">@Biz.Email</a></p>
-            </div>
-            <div>
-                <h2>Legal</h2>
-                <ul>
-                    <li><a href="/privacy">Privacy Policy</a></li>
-                    <li><a href="/cookies">Cookie Policy</a></li>
-                    <li><a href="/terms">Terms of Use</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bar">
-            <div class="footer-bar-inner">
-                <span>&copy; @DateTime.Now.Year @Biz.LegalName t/a @Biz.TradingName</span>
-                <span class="reg-line">
-                    Reg. No @Biz.RegistrationNumber
-                    @if (!string.IsNullOrWhiteSpace(Biz.VatNumber))
-                    {
-                        <text>| VAT No @Biz.VatNumber</text>
-                    }
-                </span>
-            </div>
-        </div>
+        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">&copy; @DateTime.Now.Year @Biz.LegalName t/a @Biz.TradingName</p>
+        <p class="reg-line">
+            Reg. No @Biz.RegistrationNumber
+            @if (!string.IsNullOrWhiteSpace(Biz.VatNumber))
+            {
+                <text>| VAT No @Biz.VatNumber</text>
+            }
+        </p>
+        <p>Precision CNC Machining | Quality Engineering Solutions</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem;">@Biz.StreetAddress, @Biz.Suburb, @Biz.City, @Biz.PostalCode</p>
+        <nav class="footer-links" aria-label="Legal">
+            <a class="hit-slop" href="/privacy">Privacy Policy</a>
+            <a class="hit-slop" href="/terms">Terms of Use</a>
+        </nav>
     </footer>
 
     <dialog id="cmd" class="sheet cmd" aria-label="Command menu">
@@ -172,11 +121,6 @@
             <p id="cmd-empty" class="cmd-empty" hidden>No matches found.</p>
         </div>
     </dialog>
-
-    <div id="cookie-notice" class="cookie-notice" role="region" aria-label="Cookie notice" hidden>
-        <p>This site sets no tracking or advertising cookies. It only remembers your gallery shortlist on your device if you use it. <a href="/cookies">Cookie Policy</a></p>
-        <button type="button" id="cookie-ok" class="btn-quiet">Got it</button>
-    </div>
 
     <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
 

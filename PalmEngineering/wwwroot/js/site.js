@@ -459,19 +459,4 @@
             prefetch(e.target.closest && e.target.closest('a[href]'));
         }, { passive: true });
     }
-
-    /* ---------- Cookie notice (informational: no non-essential cookies are used) ---------- */
-    var notice = $('#cookie-notice');
-    if (notice) {
-        var NKEY = 'palm.cookie-notice.v1';
-        if (!store.get(NKEY, false)) {
-            notice.hidden = false;
-            document.body.classList.add('has-cookie-notice');
-            $('#cookie-ok').addEventListener('click', function () {
-                store.set(NKEY, true);
-                notice.hidden = true;
-                document.body.classList.remove('has-cookie-notice');
-            });
-        }
-    }
 })();
