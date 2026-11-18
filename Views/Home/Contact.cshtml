@@ -12,51 +12,51 @@
     </div>
 }
 
-<section class="band-paper contact-band" aria-labelledby="contact-h">
-    <div class="container">
-        <div class="section-head">
-            <h2 id="contact-h">Contact Information</h2>
+<div class="container">
+    <div class="contact-grid">
+        <div class="contact-item">
+            <span class="service-icon">@Icons.Svg("pin")</span>
+            <h2>Location</h2>
+            <p>
+                @Biz.StreetAddress<br />
+                @Biz.Suburb, @Biz.City<br />
+                @Biz.Province, @Biz.PostalCode
+            </p>
+            <button type="button" class="btn-quiet" data-copy-btn="@Biz.FullAddress" data-label="Address">Copy address</button>
         </div>
-        <div class="contact-grid">
-            <div class="contact-item">
-                <h2>@Icons.Svg("pin") Location</h2>
-                <p>
-                    @Biz.StreetAddress<br />
-                    @Biz.Suburb, @Biz.City<br />
-                    @Biz.Province, @Biz.PostalCode
-                </p>
-                <button type="button" class="btn-quiet" data-copy-btn="@Biz.FullAddress" data-label="Address">Copy address</button>
-            </div>
 
-            <div class="contact-item">
-                <h2>@Icons.Svg("phone") Phone</h2>
-                <p>
-                    <strong>Preferred:</strong>
-                    <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)">@Biz.PreferredPhone</a><br />
-                    Alternative:
-                    <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.AlternativePhone)">@Biz.AlternativePhone</a><br />
-                    Work:
-                    <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.WorkPhone)">@Biz.WorkPhone</a>
-                </p>
-            </div>
-
-            <div class="contact-item">
-                <h2>@Icons.Svg("mail") Email</h2>
-                <p>
-                    <a class="hit-slop" href="mailto:@Biz.Email">@Biz.Email</a>
-                </p>
-                <button type="button" class="btn-quiet" data-copy-btn="@Biz.Email" data-label="Email address">Copy email</button>
-            </div>
-
-            <div class="contact-item">
-                <h2>@Icons.Svg("clock") Hours</h2>
-                <p class="hours">
-                    <strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br />
-                    <strong>Saturday:</strong> Closed<br />
-                    <strong>Sunday:</strong> Closed
-                </p>
-            </div>
+        <div class="contact-item">
+            <span class="service-icon">@Icons.Svg("phone")</span>
+            <h2>Phone</h2>
+            <p>
+                <strong>Preferred:</strong>
+                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)">@Biz.PreferredPhone</a><br />
+                Alternative:
+                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.AlternativePhone)">@Biz.AlternativePhone</a><br />
+                Work:
+                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.WorkPhone)">@Biz.WorkPhone</a>
+            </p>
         </div>
+
+        <div class="contact-item">
+            <span class="service-icon">@Icons.Svg("mail")</span>
+            <h2>Email</h2>
+            <p>
+                <a class="hit-slop" href="mailto:@Biz.Email">@Biz.Email</a>
+            </p>
+            <button type="button" class="btn-quiet" data-copy-btn="@Biz.Email" data-label="Email address">Copy email</button>
+        </div>
+
+        <div class="contact-item">
+            <span class="service-icon">@Icons.Svg("clock")</span>
+            <h2>Hours</h2>
+            <p class="hours">
+                <strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br />
+                <strong>Saturday:</strong> Closed<br />
+                <strong>Sunday:</strong> Closed
+            </p>
+        </div>
+    </div>
 
     <div class="legal-box">
         <p><strong>@Biz.LegalName</strong> trading as <strong>@Biz.TradingName</strong></p>
@@ -73,5 +73,4 @@
         }
         <p>Physical address: @Biz.FullAddress</p>
     </div>
-    </div>
-</section>
+</div>

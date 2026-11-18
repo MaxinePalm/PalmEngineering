@@ -28,13 +28,14 @@ wwwroot/
   css/site.css               All styles (design tokens at the top)
   js/site.js                 Command menu, gallery lightbox, shortlist, toasts, shortcuts
   js/blurhash.js             Image placeholders
-  fonts/                     Self-hosted Inter and its licence
+  fonts/                     Self-hosted Inter and Barlow Condensed, with licences
   images/gallery/            Project photos
 ```
 
 ## Design
 
-- Colours and spacing are tokens at the top of `site.css` (navy and blue, Inter, white cards on soft grey sections).
+- Engineering theme: navy drawing-sheet bands with a blueprint grid, steel-grey lines and an amber accent, Barlow Condensed headlines with Inter body text. Colours and spacing are tokens at the top of `site.css`.
+- Home page has an animated technical drawing in the hero and a drawing-style title block; inner pages share a banner with breadcrumbs.
 - Layout is fluid: grids use `auto-fit` and the header wraps instead of overflowing.
 
 ## Configuration
@@ -45,5 +46,5 @@ Empty values are hidden on the site. Do not commit secrets: use `dotnet user-sec
 ## Security notes
 
 Security headers and a CSP are set in `Program.cs`, per-IP rate limiting is enabled, and the site sets no cookies.
-No third-party scripts or fonts are loaded (Inter is self-hosted). The only data kept in the browser is the
+No third-party scripts or fonts are loaded (Inter and Barlow Condensed are self-hosted). The only data kept in the browser is the
 gallery shortlist and the cookie-notice choice (see the Privacy Policy and Cookie Policy).
