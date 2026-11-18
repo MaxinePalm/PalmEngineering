@@ -1,61 +1,76 @@
-﻿@model PalmEngineering.Models.Service
 @{
     ViewData["Title"] = "Contact Us";
-    Layout = "_Layout";
+    ViewData["Description"] = "Contact Palm Engineering at 242 Commercial Rd, Sidwell, Gqeberha. Phone, email and opening hours.";
+}
+@section Hero {
+    <div class="page-banner">
+        <div class="page-banner-inner">
+            <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">Contact</li></ol></nav>
+            <h1>Contact us</h1>
+            <p>Call, email or visit our workshop in Gqeberha.</p>
+        </div>
+    </div>
 }
 
-<section class="info-card">
-
-    <h2 style="text-align: center; margin-bottom: 1rem;">
-        Contact Information
-    </h2>
-
-    <div style="
-        width: 80px;
-        height: 3px;
-        background: linear-gradient(90deg, var(--secondary), var(--accent));
-        margin: 0 auto 2.5rem;
-        border-radius: 2px;">
-    </div>
-
+<div class="container">
     <div class="contact-grid">
         <div class="contact-item">
-            <h4>📍 Location</h4>
+            <span class="service-icon">@Icons.Svg("pin")</span>
+            <h2>Location</h2>
             <p>
-                242 Commercial Rd<br />
-                Sidwell, Gqeberha<br />
-                Eastern Cape, 6070
+                @Biz.StreetAddress<br />
+                @Biz.Suburb, @Biz.City<br />
+                @Biz.Province, @Biz.PostalCode
             </p>
+            <button type="button" class="btn-quiet" data-copy-btn="@Biz.FullAddress" data-label="Address">Copy address</button>
         </div>
 
         <div class="contact-item">
-            <h4>📞 Phone</h4>
+            <span class="service-icon">@Icons.Svg("phone")</span>
+            <h2>Phone</h2>
             <p>
                 <strong>Preferred:</strong>
-                <a href="tel:0829217644">082 921 7644</a><br />
+                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)">@Biz.PreferredPhone</a><br />
                 Alternative:
-                <a href="tel:0836566604">083 656 6604</a><br />
+                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.AlternativePhone)">@Biz.AlternativePhone</a><br />
                 Work:
-                <a href="tel:0414539681">041 453 9681</a>
+                <a class="hit-slop" href="tel:@BusinessInfo.Tel(Biz.WorkPhone)">@Biz.WorkPhone</a>
             </p>
         </div>
 
         <div class="contact-item">
-            <h4>📧 Email</h4>
+            <span class="service-icon">@Icons.Svg("mail")</span>
+            <h2>Email</h2>
             <p>
-                <a href="mailto:palm@palmeng.co.za">
-                    palm@palmeng.co.za
-                </a>
+                <a class="hit-slop" href="mailto:@Biz.Email">@Biz.Email</a>
             </p>
+            <button type="button" class="btn-quiet" data-copy-btn="@Biz.Email" data-label="Email address">Copy email</button>
         </div>
 
         <div class="contact-item">
-            <h4>🕒 Hours</h4>
-            <p>
-                <strong>Monday - Friday:</strong> 8:00 AM – 5:00 PM<br />
+            <span class="service-icon">@Icons.Svg("clock")</span>
+            <h2>Hours</h2>
+            <p class="hours">
+                <strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM<br />
                 <strong>Saturday:</strong> Closed<br />
                 <strong>Sunday:</strong> Closed
             </p>
         </div>
     </div>
-</section>
+
+    <div class="legal-box">
+        <p><strong>@Biz.LegalName</strong> trading as <strong>@Biz.TradingName</strong></p>
+        <p class="reg-line">
+            Registration No @Biz.RegistrationNumber
+            @if (!string.IsNullOrWhiteSpace(Biz.VatNumber))
+            {
+                <text>| VAT No @Biz.VatNumber</text>
+            }
+        </p>
+        @if (!string.IsNullOrWhiteSpace(Biz.Directors))
+        {
+            <p>Directors: @Biz.Directors</p>
+        }
+        <p>Physical address: @Biz.FullAddress</p>
+    </div>
+</div>

@@ -1,78 +1,70 @@
-﻿@{
+@{
     ViewData["Title"] = "About Us";
-    Layout = "_Layout";
+    ViewData["Description"] = "About Palm Engineering: over 30 years of general and precision engineering, tooling and innovative design in Gqeberha.";
 }
 
-<h1 style="color: var(--primary); margin-bottom: 3rem;">
-    About Precision Engineering Solutions
-</h1>
+@section Hero {
+    <div class="page-banner">
+        <div class="page-banner-inner">
+            <nav class="crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">About</li></ol></nav>
+            <h1>About Palm Engineering</h1>
+            <p>Over 30 years of general and precision engineering, tooling and innovative design.</p>
+        </div>
+    </div>
+}
 
+<div class="container">
 <div class="about-content">
 
-    <!-- LEFT COLUMN -->
-    <div class="about-text">
-
-        <!-- Partner Section -->
-        <h2 style="margin-top: 2.5rem;">Your Partner in Precision Manufacturing</h2>
-        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 1.5rem; border-radius: 2px;"></div>
-
-        <p style="margin-bottom: 1rem;">
-            With over 25 years of experience in precision engineering, we specialize in producing
-            high-quality components for aerospace, medical, automotive, and industrial applications.
-        </p>
-
-        <p style="margin-bottom: 1rem;">
-            Our state-of-the-art facility houses the latest CNC milling centers, turning centers,
-            and inspection equipment, enabling us to deliver parts with exceptional accuracy and repeatability.
-        </p>
-
-        <!-- Capabilities Section -->
-        <h2 style="margin-top: 3rem;">Our Capabilities</h2>
-        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 1.5rem; border-radius: 2px;"></div>
-
-        <ul class="capabilities">
-            <li>5-axis CNC milling up to 40" x 20" x 24"</li>
-            <li>CNC turning with live tooling</li>
-            <li>Wire EDM for complex geometries</li>
-            <li>Surface grinding and precision finishing</li>
-            <li>CMM inspection and quality documentation</li>
-            <li>Material expertise: aluminum, steel, stainless, titanium, plastics</li>
-            <li>Prototype to production runs</li>
-            <li>Design consultation and DFM support</li>
-        </ul>
-    </div>
-
-    <!-- RIGHT COLUMN -->
     <div>
-
-        <!-- Quality Section -->
-        <h2 style="margin-top: 2.5rem;">Quality Standards</h2>
-        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 1.5rem; border-radius: 2px;"></div>
-
-        <p style="margin-bottom: 1rem;">
-            We maintain the highest quality standards in every project:
+        <h2>Your Partner in Precision Manufacturing</h2>
+        
+        <p>
+            With over 30 years of experience in general and precision engineering, tooling and innovative design,
+            we produce custom components and equipment for industrial, automotive, brewing, woodworking and educational customers.
+        </p>
+        <p>
+            Our Gqeberha workshop combines CNC machining with skilled hands-on engineering, so we can take a job from
+            first sketch or drawing through to a finished, checked part.
         </p>
 
+        <h2>Our Capabilities</h2>
+        
         <ul class="capabilities">
-            <li>ISO 9001:2015 Certified</li>
-            <li>AS9100 Aerospace Certified</li>
-            <li>First Article Inspection (FAI)</li>
-            <li>Statistical Process Control (SPC)</li>
-            <li>Full traceability and documentation</li>
+            <li>CNC milling</li>
+            <li>CNC turning and lathe work</li>
+            <li>Wire EDM for complex geometries</li>
+            <li>Surface and cylindrical grinding</li>
+            <li>Inspection and quality documentation</li>
+            <li>Machining in a range of metals and engineering plastics</li>
+            <li>Prototype to production runs</li>
+            <li>Design and innovation support</li>
         </ul>
-
-        <!-- Industries Section -->
-        <h2 style="margin-top: 3rem;">Industries Served</h2>
-        <div style="width: 80px; height: 3px; background: linear-gradient(90deg, var(--secondary), var(--accent)); margin: 1rem 0 1.5rem; border-radius: 2px;"></div>
-
-        <ul class="capabilities">
-            <li>Aerospace & Defense</li>
-            <li>Medical Devices</li>
-            <li>Automotive Racing</li>
-            <li>Industrial Automation</li>
-            <li>Oil & Gas</li>
-            <li>Robotics</li>
-        </ul>
-
     </div>
+
+    <div>
+        <h2>Our Approach to Quality</h2>
+        
+        <p>We aim to supply quality products on time and at the right price:</p>
+
+        <ul class="capabilities">
+            <li>Work to your drawings and specifications</li>
+            <li>Parts checked throughout manufacture</li>
+            <li>Realistic lead times agreed upfront</li>
+            <li>B-BBEE Rating Level 4</li>
+        </ul>
+
+        <h2>Work We Do</h2>
+        
+        <ul class="capabilities">
+            <li>Material handling and conveying</li>
+            <li>Automotive components</li>
+            <li>Brewing equipment</li>
+            <li>Stainless steel fabrication</li>
+            <li>Woodworking tools</li>
+            <li>Educational projects</li>
+        </ul>
+    </div>
+</div>
+
 </div>

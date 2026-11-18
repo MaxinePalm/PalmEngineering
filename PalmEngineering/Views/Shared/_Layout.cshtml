@@ -1,580 +1,187 @@
-﻿<!DOCTYPE html>
+@{
+    var action = ViewContext.RouteData.Values["action"]?.ToString() ?? "Index";
+    var nav = new[]
+    {
+        new { Label = "Home", Href = "/", Action = "Index" },
+        new { Label = "About", Href = "/Home/About", Action = "About" },
+        new { Label = "Services", Href = "/Home/Services", Action = "Services" },
+        new { Label = "Gallery", Href = "/Home/Gallery", Action = "Gallery" },
+        new { Label = "Contact", Href = "/Home/Contact", Action = "Contact" }
+    };
+    var pages = new[]
+    {
+        new { Label = "Home", Href = "/", Keys = "g h", Kw = "home start" },
+        new { Label = "About", Href = "/Home/About", Keys = "g a", Kw = "about company" },
+        new { Label = "Services", Href = "/Home/Services", Keys = "g s", Kw = "services milling turning" },
+        new { Label = "Gallery", Href = "/Home/Gallery", Keys = "g g", Kw = "gallery photos projects" },
+        new { Label = "Contact", Href = "/Home/Contact", Keys = "g c", Kw = "contact phone email address hours" },
+        new { Label = "Privacy Policy", Href = "/privacy", Keys = "", Kw = "privacy popia data" },
+        new { Label = "Cookie Policy", Href = "/cookies", Keys = "", Kw = "cookies local storage tracking" },
+        new { Label = "Terms of Use", Href = "/terms", Keys = "", Kw = "terms conditions legal" }
+    };
+    var description = ViewData["Description"] as string
+        ?? "Palm Engineering is a precision CNC machining and general engineering workshop in Sidwell, Gqeberha, with over 30 years of experience.";
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="@description" />
+    <meta name="theme-color" content="#0f2557" />
     <title>@ViewData["Title"] - Palm Engineering</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0f2557;
-            --primary-dark: #0a1a3d;
-            --secondary: #2563eb;
-            --accent: #3b82f6;
-            --text-dark: #1e293b;
-            --text-light: #64748b;
-            --bg-light: #f8fafc;
-            --border: #e2e8f0;
-            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background: white;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Header */
-        header {
-            background: white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .header-content {
-            max-width: 100%; /* Changed from 1280px */
-            margin: 0 auto;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: var(--primary);
-            letter-spacing: -0.02em;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        nav a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-            position: relative;
-        }
-
-            nav a:hover {
-                color: var(--secondary);
-            }
-
-            nav a::after {
-                content: '';
-                position: absolute;
-                bottom: -4px;
-                left: 0;
-                width: 0;
-                height: 2px;
-                background: var(--secondary);
-                transition: width 0.3s;
-            }
-
-            nav a:hover::after {
-                width: 100%;
-            }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-            .hero::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
-                opacity: 0.5;
-            }
-
-        .hero-content {
-            max-width: 100%; /* Changed from 1280px */
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-            padding: 0 2rem;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-
-        .hero .subtitle {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            font-weight: 300;
-            opacity: 0.95;
-        }
-
-        .hero .tagline {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            opacity: 0.85;
-            font-weight: 400;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: white;
-            color: var(--primary);
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 1.05rem;
-            transition: all 0.3s;
-            box-shadow: var(--shadow-lg);
-        }
-
-            .btn:hover {
-                transform: translateY(-2px);
-                box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
-            }
-
-        .btn-secondary {
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            margin-left: 1rem;
-        }
-
-            .btn-secondary:hover {
-                background: white;
-                color: var(--primary);
-            }
-
-        /* Main Content */
-        main {
-            max-width: 100%; /* Changed from 1280px */
-            margin: 0 auto;
-            padding: 4rem 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            color: var(--primary);
-            font-size: 2.75rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            letter-spacing: -0.02em;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 1.2rem;
-            margin-bottom: 3rem;
-            font-weight: 400;
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2.5rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-            position: relative;
-        }
-
-            .service-card::before {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                height: 4px;
-                background: linear-gradient(90deg, var(--secondary), var(--accent));
-                border-radius: 16px 16px 0 0;
-                opacity: 0;
-                transition: opacity 0.3s;
-            }
-
-            .service-card:hover {
-                transform: translateY(-8px);
-                box-shadow: var(--shadow-lg);
-                border-color: var(--secondary);
-            }
-
-                .service-card:hover::before {
-                    opacity: 1;
-                }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-        }
-
-        .service-card p {
-            color: var(--text-light);
-            line-height: 1.7;
-            font-size: 1rem;
-        }
-
-        /* Form Styles */
-        .form-container {
-            background: white;
-            padding: 3rem;
-            border-radius: 16px;
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow);
-        }
-
-        .form-group {
-            margin-bottom: 1.75rem;
-        }
-
-            .form-group label {
-                display: block;
-                margin-bottom: 0.6rem;
-                font-weight: 600;
-                color: var(--text-dark);
-                font-size: 0.95rem;
-            }
-
-            .form-group input, .form-group select, .form-group textarea {
-                width: 100%;
-                padding: 0.9rem 1rem;
-                border: 1px solid var(--border);
-                border-radius: 8px;
-                font-size: 1rem;
-                font-family: inherit;
-                transition: all 0.2s;
-                background: white;
-            }
-
-                .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-                    outline: none;
-                    border-color: var(--secondary);
-                    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-                }
-
-            .form-group textarea {
-                min-height: 160px;
-                resize: vertical;
-            }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--secondary), var(--accent));
-            color: white;
-            border: none;
-            padding: 1rem 3rem;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 1.05rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: var(--shadow);
-        }
-
-            .btn-primary:hover {
-                transform: translateY(-2px);
-                box-shadow: var(--shadow-lg);
-            }
-
-        .alert-success {
-            background: #dcfce7;
-            color: #166534;
-            padding: 1.25rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border-left: 4px solid #22c55e;
-            font-weight: 500;
-        }
-
-        .alert-error {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 1.25rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            border-left: 4px solid #ef4444;
-            font-weight: 500;
-        }
-
-        .text-danger {
-            color: #dc2626;
-            font-size: 0.875rem;
-            margin-top: 0.35rem;
-            display: block;
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
-            padding: 4rem 2rem;
-            margin: 4rem 0;
-            border-radius: 20px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            max-width: 100%; /* Changed from 1280px */
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .stat-item {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 3.5rem;
-            font-weight: 800;
-            display: block;
-            margin-bottom: 0.5rem;
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            font-weight: 500;
-        }
-
-        /* Info Cards */
-        .info-card {
-            background: var(--bg-light);
-            padding: 2.5rem;
-            border-radius: 16px;
-            margin-bottom: 2rem;
-        }
-
-            .info-card h2 {
-                color: var(--primary);
-                margin-bottom: 1.5rem;
-                font-size: 2rem;
-                font-weight: 700;
-            }
-
-            .info-card p {
-                color: var(--text-light);
-                line-height: 1.8;
-                margin-bottom: 1rem;
-                font-size: 1.05rem;
-            }
-
-        .capabilities {
-            list-style: none;
-            display: grid;
-            gap: 0.75rem;
-        }
-
-            .capabilities li {
-                padding: 1rem 1rem 1rem 3rem;
-                position: relative;
-                background: white;
-                border-radius: 8px;
-                border: 1px solid var(--border);
-                font-size: 1rem;
-                color: var(--text-dark);
-            }
-
-                .capabilities li:before {
-                    content: "✓";
-                    position: absolute;
-                    left: 1rem;
-                    color: #22c55e;
-                    font-weight: bold;
-                    font-size: 1.2rem;
-                }
-
-        /* Contact Info */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            border: 1px solid var(--border);
-            text-align: center;
-        }
-
-            .contact-item h4 {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
-                color: var(--primary);
-                font-weight: 600;
-            }
-
-            .contact-item p {
-                color: var(--text-light);
-                line-height: 1.8;
-            }
-
-            .contact-item a {
-                color: var(--secondary);
-                text-decoration: none;
-                font-weight: 500;
-                transition: color 0.2s;
-            }
-
-                .contact-item a:hover {
-                    color: var(--accent);
-                }
-
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 5rem;
-        }
-
-            footer p {
-                opacity: 0.9;
-                margin: 0.5rem 0;
-            }
-
-        /* Responsive */
-        @@media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            nav ul {
-                flex-wrap: wrap;
-                gap: 1rem;
-                justify-content: center;
-            }
-
-            .hero {
-                padding: 4rem 1.5rem;
-            }
-
-                .hero h1 {
-                    font-size: 2.5rem;
-                }
-
-                .hero .subtitle {
-                    font-size: 1.2rem;
-                }
-
-            .btn-secondary {
-                margin-left: 0;
-                margin-top: 1rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-container {
-                padding: 2rem 1.5rem;
-            }
-
-            main {
-                padding: 3rem 1.5rem;
-            }
-        }
-    </style>
+    <link rel="preload" href="~/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <script type="speculationrules">
+    {"prerender":[{"where":{"href_matches":"/*"},"eagerness":"moderate"}]}
+    </script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <div class="topbar">
+        <div class="topbar-inner">
+            <div class="topbar-group">
+                <a href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)">@Icons.Svg("phone") <span class="tnum">@Biz.PreferredPhone</span></a>
+                <a href="mailto:@Biz.Email">@Icons.Svg("mail") <span>@Biz.Email</span></a>
+            </div>
+            <div class="topbar-group">
+                <span>@Icons.Svg("clock") <span class="hours">Mon-Fri 8:00 AM - 5:00 PM</span></span>
+                <span>@Icons.Svg("pin") <span>@Biz.Suburb, @Biz.City</span></span>
+            </div>
+        </div>
+    </div>
+
     <header>
         <div class="header-content">
-            <a href="/" class="logo">
-                <div class="logo-icon">⚙️</div>
-                <span>Palm Engineering</span>
+            <a href="/" class="logo" aria-label="Palm Engineering home">
+                <span class="logo-icon">@Icons.Svg("gear")</span>
+                <span class="logo-text">
+                    <span class="logo-name">Palm Engineering</span>
+                    <span class="logo-sub">PRECISION CNC MACHINING</span>
+                </span>
             </a>
-            <nav>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/Home/About">About</a></li>
-                    <li><a href="/Home/Services">Services</a></li>
-                    <li><a href="/Home/Gallery">Gallery</a></li>
-                    <li><a href="/Home/Contact">Contact</a></li>
-
-                </ul>
-            </nav>
+            <div class="header-right">
+                <nav aria-label="Main">
+                    <ul>
+                        @foreach (var n in nav)
+                        {
+                            <li><a class="hit-slop" href="@n.Href" aria-current="@(n.Action == action ? "page" : null)">@n.Label</a></li>
+                        }
+                    </ul>
+                </nav>
+                <button type="button" id="cmd-open" class="cmd-trigger hit-slop" aria-haspopup="dialog" aria-keyshortcuts="Control+K Meta+K">
+                    <span>Search</span>
+                    <kbd class="kbd-hint" aria-hidden="true"><span data-mod>Ctrl</span> K</kbd>
+                </button>
+            </div>
         </div>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
+        @RenderSection("Hero", required: false)
         @RenderBody()
     </main>
 
     <footer>
-        <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem;">&copy; 2024 Palm Engineering</p>
-        <p>Precision CNC Machining | Quality Engineering Solutions</p>
-        <p style="font-size: 0.9rem; margin-top: 1rem;">242 Commercial Rd, Sidwell, Gqeberha, 6070</p>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="/" class="logo" aria-label="Palm Engineering home">
+                    <span class="logo-icon">@Icons.Svg("gear")</span>
+                    <span class="logo-text">
+                        <span class="logo-name">Palm Engineering</span>
+                        <span class="logo-sub">PRECISION CNC MACHINING</span>
+                    </span>
+                </a>
+                <p>General and precision engineering, tooling and innovative design for over 30 years.</p>
+                <span class="chip">B-BBEE Rating Level 4</span>
+            </div>
+            <div>
+                <h2>Explore</h2>
+                <ul>
+                    @foreach (var n in nav)
+                    {
+                        <li><a href="@n.Href">@n.Label</a></li>
+                    }
+                </ul>
+            </div>
+            <div>
+                <h2>Contact</h2>
+                <p>@Biz.StreetAddress<br />@Biz.Suburb, @Biz.City<br />@Biz.Province, @Biz.PostalCode</p>
+                <p><a href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)" class="tnum">@Biz.PreferredPhone</a><br /><a href="mailto:@Biz.Email">@Biz.Email</a></p>
+            </div>
+            <div>
+                <h2>Legal</h2>
+                <ul>
+                    <li><a href="/privacy">Privacy Policy</a></li>
+                    <li><a href="/cookies">Cookie Policy</a></li>
+                    <li><a href="/terms">Terms of Use</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bar">
+            <div class="footer-bar-inner">
+                <span>&copy; @DateTime.Now.Year @Biz.LegalName t/a @Biz.TradingName</span>
+                <span class="reg-line">
+                    Reg. No @Biz.RegistrationNumber
+                    @if (!string.IsNullOrWhiteSpace(Biz.VatNumber))
+                    {
+                        <text>| VAT No @Biz.VatNumber</text>
+                    }
+                </span>
+            </div>
+        </div>
     </footer>
+
+    <dialog id="cmd" class="sheet cmd" aria-label="Command menu">
+        <div class="sheet-body">
+            <div class="sheet-grip" data-drag aria-hidden="true"></div>
+            <div class="cmd-row">
+                <input id="cmd-input" type="text" role="combobox" aria-expanded="true" aria-controls="cmd-list" aria-autocomplete="list" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search pages and actions" aria-label="Search pages and actions" />
+                <kbd class="kbd-hint" aria-hidden="true">Esc</kbd>
+            </div>
+            <ul id="cmd-list" class="cmd-list" role="listbox" aria-label="Pages and actions">
+                <li class="cmd-group" role="presentation">Pages</li>
+                @foreach (var p in pages)
+                {
+                    <li role="option" aria-selected="false" data-href="@p.Href" data-keys="@p.Keys" data-kw="@p.Kw">
+                        <span>@p.Label</span>
+                        @if (p.Keys.Length > 0)
+                        {
+                            <span class="keys" aria-hidden="true">
+                                @foreach (var k in p.Keys.Split(' ', StringSplitOptions.RemoveEmptyEntries))
+                                {
+                                    <kbd>@k.ToUpperInvariant()</kbd>
+                                }
+                            </span>
+                        }
+                    </li>
+                }
+                <li class="cmd-group" role="presentation">Actions</li>
+                <li role="option" aria-selected="false" data-href="tel:@BusinessInfo.Tel(Biz.PreferredPhone)" data-kw="call phone ring"><span>Call @Biz.PreferredPhone</span></li>
+                <li role="option" aria-selected="false" data-href="mailto:@Biz.Email" data-kw="email write message"><span>Email @Biz.Email</span></li>
+                <li role="option" aria-selected="false" data-copy="@Biz.Email" data-label="Email address" data-kw="copy email"><span>Copy email address</span></li>
+                <li role="option" aria-selected="false" data-copy="@Biz.FullAddress" data-label="Address" data-kw="copy address location"><span>Copy address</span></li>
+                <li role="option" aria-selected="false" data-action="clear-shortlist" data-kw="clear shortlist saved gallery"><span>Clear gallery shortlist</span></li>
+                <li class="cmd-group" role="presentation">Gallery</li>
+                @foreach (var g in GalleryCatalog.Items)
+                {
+                    <li role="option" aria-selected="false" data-href="/Home/Gallery#@g.Slug" data-kw="gallery @g.Title.ToLowerInvariant()"><span>@g.Title</span></li>
+                }
+            </ul>
+            <p id="cmd-empty" class="cmd-empty" hidden>No matches found.</p>
+        </div>
+    </dialog>
+
+    <div id="cookie-notice" class="cookie-notice" role="region" aria-label="Cookie notice" hidden>
+        <p>This site sets no tracking or advertising cookies. It only remembers your gallery shortlist on your device if you use it. <a href="/cookies">Cookie Policy</a></p>
+        <button type="button" id="cookie-ok" class="btn-quiet">Got it</button>
+    </div>
+
+    <div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+
+    <script src="~/js/blurhash.js" asp-append-version="true" defer></script>
+    <script src="~/js/site.js" asp-append-version="true" defer></script>
+    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
