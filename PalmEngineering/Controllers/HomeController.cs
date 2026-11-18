@@ -43,12 +43,12 @@ namespace PalmEngineering.Controllers
 
         private static List<Service> GetServices() => new()
         {
-            new Service { Id = 1, Name = "CNC Milling", Description = "High-precision CNC milling for complex parts with tight tolerances", IconClass = "⚙️" },
-            new Service { Id = 2, Name = "CNC Turning", Description = "Advanced lathe work for cylindrical components and rotational parts", IconClass = "🔄" },
-            new Service { Id = 3, Name = "Precision Grinding", Description = "Surface and cylindrical grinding for superior surface finish", IconClass = "💎" },
-            new Service { Id = 4, Name = "Wire EDM", Description = "Electrical discharge machining for intricate profiles and hard materials", IconClass = "⚡" },
-            new Service { Id = 5, Name = "Quality Inspection", Description = "Inspection and quality checks with documented results", IconClass = "🔍" },
-            new Service { Id = 6, Name = "Prototyping", Description = "Rapid prototyping services from concept to finished part", IconClass = "🔧" }
+            new Service { Name = "CNC Milling", Description = "High-precision CNC milling for complex parts with tight tolerances", Icon = "⚙️" },
+            new Service { Name = "CNC Turning", Description = "Advanced lathe work for cylindrical components and rotational parts", Icon = "🔄" },
+            new Service { Name = "Precision Grinding", Description = "Surface and cylindrical grinding for superior surface finish", Icon = "💎" },
+            new Service { Name = "Wire EDM", Description = "Electrical discharge machining for intricate profiles and hard materials", Icon = "⚡" },
+            new Service { Name = "Quality Inspection", Description = "Inspection and quality checks with documented results", Icon = "🔍" },
+            new Service { Name = "Prototyping", Description = "Rapid prototyping services from concept to finished part", Icon = "🔧" }
         };
     }
 }

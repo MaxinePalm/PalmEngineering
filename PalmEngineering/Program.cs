@@ -116,7 +116,6 @@ app.UseStaticFiles(new StaticFileOptions
 
 app.UseRouting();
 app.UseRateLimiter();
-app.UseAuthorization();
 
 // Static files skip dot-folders, so serve security.txt explicitly.
 app.MapGet("/.well-known/security.txt", (BusinessInfo biz) =>

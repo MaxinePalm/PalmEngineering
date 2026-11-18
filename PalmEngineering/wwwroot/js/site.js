@@ -263,8 +263,6 @@
     var cmdList = $('#cmd-list');
     var cmdItems = cmdList ? $$('[role="option"]', cmdList) : [];
     var cmdEmpty = $('#cmd-empty');
-    var activeIdx = -1;
-
     cmdItems.forEach(function (li, i) { li.id = 'cmd-opt-' + i; });
 
     function visibleItems() { return cmdItems.filter(function (li) { return !li.hidden; }); }
@@ -315,6 +313,9 @@
         } else if (action === 'clear-shortlist') {
             requestClose(cmd);
             clearShortlist();
+        } else if (action === 'toggle-theme') {
+            requestClose(cmd);
+            if (window.palmToggleTheme) window.palmToggleTheme();
         }
     }
 
@@ -327,7 +328,7 @@
     }
 
     if (cmd) {
-        $$('#cmd-open, [data-cmd-open]').forEach(function (b) { b.addEventListener('click', openCmd); });
+        $$('#cmd-open').forEach(function (b) { b.addEventListener('click', openCmd); });
         cmdInput.addEventListener('input', filterCmd);
         cmdInput.addEventListener('keydown', function (e) {
             var vis = visibleItems();

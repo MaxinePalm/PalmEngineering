@@ -1,4 +1,4 @@
-/* Minimal BlurHash decoder (https://blurha.sh). Exposes window.decodeBlurHash and window.paintBlurHash. */
+/* Minimal BlurHash decoder (https://blurha.sh). Exposes window.paintBlurHash. */
 (function () {
     'use strict';
     var DIGITS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+,-.:;=?@[]^_{|}~';
@@ -26,8 +26,7 @@
         return [signPow((r - 9) / 9, 2) * max, signPow((g - 9) / 9, 2) * max, signPow((b - 9) / 9, 2) * max];
     }
 
-    function decodeBlurHash(hash, width, height, punch) {
-        punch = punch || 1;
+    function decodeBlurHash(hash, width, height) {
         if (!hash || hash.length < 6) return null;
         var sizeFlag = decode83(hash[0]);
         var numY = Math.floor(sizeFlag / 9) + 1, numX = (sizeFlag % 9) + 1;
@@ -35,7 +34,7 @@
         var maxVal = (decode83(hash[1]) + 1) / 166;
         var colors = [], i, j, x, y;
         for (i = 0; i < numX * numY; i++) {
-            colors.push(i === 0 ? decodeDC(decode83(hash.substring(2, 6))) : decodeAC(decode83(hash.substring(4 + i * 2, 6 + i * 2)), maxVal * punch));
+            colors.push(i === 0 ? decodeDC(decode83(hash.substring(2, 6))) : decodeAC(decode83(hash.substring(4 + i * 2, 6 + i * 2)), maxVal));
         }
         var bytes = new Uint8ClampedArray(width * height * 4);
         for (y = 0; y < height; y++) {
@@ -65,6 +64,5 @@
         return true;
     }
 
-    window.decodeBlurHash = decodeBlurHash;
     window.paintBlurHash = paintBlurHash;
 })();

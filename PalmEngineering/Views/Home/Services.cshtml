@@ -10,31 +10,31 @@
     Precision machining solutions for your projects
 </p>
 
-<div class="divider divider-left" style="margin: 1.5rem 0 3rem;"></div>
+<div class="divider divider-left divider-wide"></div>
 
 <div class="services-grid">
     @foreach (var service in Model)
     {
         <div class="service-card">
-            <div class="service-icon" aria-hidden="true">@service.IconClass</div>
-            <h2 style="font-size: 1.5rem;">@service.Name</h2>
+            <div class="service-icon" aria-hidden="true">@service.Icon</div>
+            <h2>@service.Name</h2>
             <p>@service.Description</p>
         </div>
     }
 </div>
 
-<section style="margin-top: 4rem; background: var(--bg-light); padding: 2.5rem; border-radius: 12px;" aria-labelledby="materials-heading">
+<section class="materials" aria-labelledby="materials-heading">
 
-    <h2 id="materials-heading" style="color: var(--primary); margin-top: 0;">
+    <h2 id="materials-heading">
         Materials We Work With
     </h2>
 
-    <div class="divider divider-left" style="margin: 1rem 0 2rem;"></div>
+    <div class="divider divider-left"></div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(220px, 100%), 1fr)); gap: 2rem;">
+    <div class="materials-grid">
 
         <div>
-            <h3 style="color: var(--primary); margin-bottom: 0.75rem;">Metals</h3>
+            <h3>Metals</h3>
             <ul class="capabilities">
                 <li>Aluminium (6061, 7075, MIC-6)</li>
                 <li>Steel (4140, 4340, A36)</li>
@@ -45,7 +45,7 @@
         </div>
 
         <div>
-            <h3 style="color: var(--primary); margin-bottom: 0.75rem;">Plastics</h3>
+            <h3>Plastics</h3>
             <ul class="capabilities">
                 <li>Delrin (Acetal)</li>
                 <li>PEEK</li>
