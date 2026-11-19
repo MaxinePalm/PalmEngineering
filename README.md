@@ -6,6 +6,7 @@ It is an information site: no database, no forms, no accounts, no cookies.
 ## Run
 
 ```bash
+cd PalmEngineering
 dotnet run
 ```
 
@@ -14,22 +15,23 @@ Then open `http://localhost:5206` (or `https://localhost:7284`).
 ## Structure
 
 ```
-PalmEngineering.slnx         Solution
-PalmEngineering.csproj       Project
-Program.cs                   Pipeline: security headers + CSP, HSTS, rate limiting, static file caching
-appsettings.json             Business details (VAT number, directors, Information Officer)
-Controllers/                 HomeController: Index, About, Services, Gallery, Contact, Privacy, Cookies, Terms, Error
-Models/                      BusinessInfo, Service, GalleryItem, GalleryCatalog, Icons, ErrorViewModel
-Views/
-  Shared/                    _Layout (header, footer, command menu) and Error
-  Home/                      One view per page
-Properties/                  launchSettings.json
-wwwroot/
-  css/site.css               All styles (design tokens at the top)
-  js/site.js                 Command menu, gallery lightbox, shortlist, toasts, shortcuts
-  js/blurhash.js             Image placeholders
-  fonts/                     Self-hosted Inter and Barlow Condensed, with licences
-  images/gallery/            Project photos
+PalmEngineering.slnx           Solution (repo root)
+PalmEngineering/               Web project folder
+  PalmEngineering.csproj       Project
+  Program.cs                   Pipeline: security headers + CSP, HSTS, rate limiting, static file caching
+  appsettings.json             Business details (VAT number, directors, Information Officer)
+  Controllers/                 HomeController: Index, About, Services, Gallery, Contact, Privacy, Cookies, Terms, Error
+  Models/                      BusinessInfo, Service, GalleryItem, GalleryCatalog, Icons, ErrorViewModel
+  Views/
+    Shared/                    _Layout (header, footer, command menu) and Error
+    Home/                      One view per page
+  Properties/                  launchSettings.json
+  wwwroot/
+    css/site.css               All styles (design tokens at the top)
+    js/site.js                 Command menu, gallery lightbox, shortlist, toasts, shortcuts
+    js/blurhash.js             Image placeholders
+    fonts/                     Self-hosted Inter and Barlow Condensed, with licences
+    images/gallery/            Project photos
 ```
 
 ## Design
